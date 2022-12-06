@@ -11,8 +11,8 @@ app.use(express.urlencoded());
 app.use(express.static('views'));
 
 
-// user routers
-app.use(apiPath + 'users', require("./routes/user.route"));
+// ================== routers =======================================
+app.use(apiPath + 'users', require("./routes/user.route"));//+ 'users'
 
 app.get('/login', (req, res) => {
     res.sendFile(__dirname + "/views/login.html");
@@ -36,3 +36,12 @@ app.listen(port, function () {
     const host = 'localhost';
     console.log('Example app listening at http://%s:%s', host, port);
 });
+
+
+//https://www.youtube.com/watch?v=wuU_DfdTZOA
+
+//nodejs - https://viblo.asia/p/nodejs-bai-3template-engines-voi-ham-render-va-viet-ma-html-voi-pug-WAyK8dj9KxX
+
+
+// video quan trọng
+//https://viblo.asia/p/bai-1-bootstrap-la-gi-gioi-thieu-ve-bootstrap-DzVkpLbDknW
