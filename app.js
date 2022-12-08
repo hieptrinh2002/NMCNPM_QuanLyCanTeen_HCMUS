@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 5001;
-const apiPath = '/api/';
+//const apiPath = '/api/';
 
 app.use(express.json());
 app.use(express.urlencoded());
@@ -12,30 +12,55 @@ app.use(express.static('views'));
 
 
 // ================== routers =======================================
-app.use(apiPath + 'users', require("./routes/user.route"));//+ 'users'
+app.use('/api', require("./routes/api.route"));//+ 'users'
+app.use('/', require('./routes/staff/index.route'));
+
+// app.use('/staff')
+
 
 app.get('/login', (req, res) => {
     res.sendFile(__dirname + "/views/login.html");
 })
 
-//
-
-// app.get('/api/users', (req, res) => {
-//     res.send([{ name: "trinh hiep", adresss: "Quang Nam" }]);
-// })
 
 
-// routers API
-//app.use(apiPath + 'users', require('./routes/users.route'));
-// app.use(apiPath + 'products', require('./routes/products.route'));
-//app.use(apiPath + 'upload', require('./routes/upload.route'));
-
+/* ============== Routes =============== */
+// app.use('/init-system', initSystemRoute);
+// app.use('/api', apiRoute);
+// app.use('/auth', authRoute);
+// app.use('/admin', adminAuthorizationMiddleware, passSidebarStatus, adminRoute);
+// app.use(
+// 	'/management',
+// 	mgmtAuthorizationMiddleware,
+// 	passSidebarStatus,
+// 	managementRoute
+// );
+// app.use('/user', userAuthorizationMiddleware, userRoute);
+// app.use('/', homeRoute);
 
 
 app.listen(port, function () {
     const host = 'localhost';
     console.log('Example app listening at http://%s:%s', host, port);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //https://www.youtube.com/watch?v=wuU_DfdTZOA
