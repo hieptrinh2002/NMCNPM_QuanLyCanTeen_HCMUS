@@ -30,7 +30,6 @@ exports.post = async (req, res) => {
                 if (err) throw err;
                 else {
                     let accounts = [];
-
                     result.map((row) => {
                         accounts.push({
                             username: row.username,
@@ -104,7 +103,18 @@ exports.getCustomers = async (req, res) => {
                     else {
                         console.log(result);
                         db.closeDB(conection);
-                        return res.status(200).json(result);
+                        let customers = [];
+                        result.map((row) => {
+                            customers.push({
+                                customer_id: row.customer_id,
+                                fullname: row.fullname,
+                                phone: row.phone,
+                                money_available: row.money_available,
+                                email: row.email,
+                                id_card: row.id_card
+                            })
+                        })
+
                     }
                 })
             })

@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 5001;
 //const apiPath = '/api/';
@@ -11,6 +12,10 @@ app.use(express.urlencoded());
 app.use(express.static('views'));
 
 
+// set view engine
+app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'));
+
 // ================== routers =======================================
 app.use('/api', require("./routes/api.route"));//+ 'users'
 app.use('/', require('./routes/staff/index.route'));
@@ -21,22 +26,6 @@ app.use('/', require('./routes/staff/index.route'));
 app.get('/login', (req, res) => {
     res.sendFile(__dirname + "/views/login.html");
 })
-
-
-
-/* ============== Routes =============== */
-// app.use('/init-system', initSystemRoute);
-// app.use('/api', apiRoute);
-// app.use('/auth', authRoute);
-// app.use('/admin', adminAuthorizationMiddleware, passSidebarStatus, adminRoute);
-// app.use(
-// 	'/management',
-// 	mgmtAuthorizationMiddleware,
-// 	passSidebarStatus,
-// 	managementRoute
-// );
-// app.use('/user', userAuthorizationMiddleware, userRoute);
-// app.use('/', homeRoute);
 
 
 app.listen(port, function () {

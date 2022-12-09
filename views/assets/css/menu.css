@@ -1,0 +1,32 @@
+.table {
+    width: 100%;
+}
+
+.table, th, td {
+    border-bottom: 1px solid #333;
+    border-right: 1px solid #333;
+    border-collapse: collapse;
+}
+
+td, th {
+    padding: 10px 10px;
+}
+
+table thead th {
+    text-align: center;
+}
+
+table tbody td {
+    text-align: center;
+}
+
+.menu-list {
+    font-size: 20px;
+    padding: 10px 30px;
+    font-family:  'Times New Roman', Times, serif;
+    width: 100%;
+}
+
+.menu-insert__btn {
+    padding: 20px 300px;
+}
