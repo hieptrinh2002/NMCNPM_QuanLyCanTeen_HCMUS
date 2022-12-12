@@ -3,11 +3,11 @@ html(lang='vi')
   head
     meta(charset='UTF-8')
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
-    title Menu
+    title CUSTOMER
     link(rel='stylesheet' href='./assets/css/base.css')
     link(rel='stylesheet' href='./assets/css/main.css')
     link(rel='stylesheet' href='./assets/css/grid.css')
-    link(rel='stylesheet' href='./assets/css/menu.css')
+    link(rel='stylesheet' href='./assets/css/customer.css')
     link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css')
     link(href='https://fonts.googleapis.com/css?family=Roboto&display=swap' rel='stylesheet')
     link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css')
@@ -58,7 +58,7 @@ html(lang='vi')
                       location.assign("http://127.0.0.1:5503/index.html");
                       }
                     // <button class="category-item__link">Trang chủ</button>
-                  li.category-item.category-item--active
+                  li.category-item
                     button.category-item__link(type='button' onclick='dieu_huong1()') Thực đơn
                     script.
                       function dieu_huong1(){
@@ -72,7 +72,7 @@ html(lang='vi')
                       location.assign("http://127.0.0.1:5503/warehouse.html");
                       }
                     // <button class="category-item__link">Kho hàng</button>
-                  li.category-item
+                  li.category-item.category-item--active
                     button.category-item__link(type='button' onclick='dieu_huong3()') Khách hàng
                     script.
                       function dieu_huong3(){
@@ -100,26 +100,31 @@ html(lang='vi')
                       location.assign("http://127.0.0.1:5503/createcard.html");
                       }
                     // <button class="category-item__link">Tạo thẻ khách hàng</button>
-            .menu
-              .menu-list
+            .customer
+              .customer-list
                 table
                   thead
                     tr
-                      th Mã món
-                      th Tên món
-                      th Đơn giá
-                      th Số lượng hiện có
+                      th Mã KH
+                      th Họ tên
+                      th Số điện thoại
+                      th Email
+                      th mã thẻ
+                      th Số tiền còn lại
+                                    
                   tbody
-                  each product in products
+                  each customer in customers
                     tr
-                      td= product.product_id
-                      td= product.product_name
-                      td= product.price
-                      td= product.quantity_availble
+                      td= customer.customer_id
+                      td= customer.fullname
+                      td= customer.phone
+                      td= customer.email
+                      td= customer.id_card
+                      td= customer.money_available
 
-                .menu-insert__btn
-                  button.insert__btn(type='button' onclick='dieu_huong6()') THÊM MÓN ĂN
+                .customer-recharge__btn
+                  button.customer__btn(type='button' onclick='dieu_huong7()') NẠP TIỀN
                   script.
-                    function dieu_huong6(){
-                    location.assign("http://127.0.0.1:5503/menu-insert.html");
+                    function dieu_huong7(){
+                    location.assign("http://127.0.0.1:5503/recharge.html");
                     }

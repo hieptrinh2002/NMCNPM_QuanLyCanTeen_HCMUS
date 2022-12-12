@@ -13,6 +13,6 @@ router.get('/thuc_don',controller.get_menu); // xong
 router.post('/tao_the', controller.post_Create_Card);//xong
 //router.post('/thanh_toan',controller.(thanh_toan));
 router.post('/them_mon_an', controller.post_add_food)// xong
-//router.get('/demo', controller.get_demo);
+router.get('/demo', controller.get_demo);
 
 module.exports = router;

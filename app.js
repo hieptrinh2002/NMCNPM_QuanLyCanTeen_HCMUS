@@ -23,9 +23,9 @@ app.use('/', require('./routes/staff/index.route'));
 // app.use('/staff')
 
 
-app.get('/login', (req, res) => {
-    res.sendFile(__dirname + "/views/login.html");
-})
+// app.get('/login', (req, res) => {
+//     res.sendFile(__dirname + "/views/login.html");
+// })
 
 
 app.listen(port, function () {
