@@ -1,0 +1,40 @@
+.money-card {
+    padding: 10px 10px;
+    font-family:  'Times New Roman', Times, serif;
+    background-color:lightcoral;
+    border-radius: 2px;
+    text-align: center;
+}
+
+input {
+    width: 600px;
+    height: 30px;
+}
+
+
+
+td, th {
+    padding: 10px 10px;
+}
+
+
+
+.recharge {
+    font-size: 18px;
+    padding: 10px 20px;
+    font-family:  'Times New Roman', Times, serif;
+    width: 70%;
+}
+
+.recharge-card__btn {
+
+    padding: 20px 300px;
+}
+
+.recharge__btn {
+    height: 54px;
+    width: 254px;
+    font-size: 2rem;
+    background-color: tomato;
+    padding: 5px 50px;
+}

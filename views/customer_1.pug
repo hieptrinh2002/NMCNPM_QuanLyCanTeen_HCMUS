@@ -1,0 +1,22 @@
+.customer-list
+  table
+    thead
+      tr
+        th Mã KH
+        th Họ tên
+        th Số điện thoại
+        th Email
+        th mã thẻ
+        th Số tiền còn lại
+                      
+    tbody
+    each customer in customers 
+      tr
+        td= customer.customer_id
+        td= customer.fullname
+        td= customer.phone
+        td= customer.email
+        td= customer.id_card
+        td= customer.money_available
+                      
+                   
