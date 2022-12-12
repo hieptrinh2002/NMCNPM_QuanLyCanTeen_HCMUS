@@ -4,7 +4,7 @@ const controller = require('../../controllers/staff/index.controller')
 
 //router.get('/',controller.(Trang_chu));
 
-//router.get('/thuc_don',controller.(thuc_don)); // xong
+router.get('/thuc_don',controller.get_menu); // xong
 
 //router.get('/kho_hang',controller.(kho_hang));
 //router.get('/khach_hang',controller.(khach_hang)); // nạp tiền ....
