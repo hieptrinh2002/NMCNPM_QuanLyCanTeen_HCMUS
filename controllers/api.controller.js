@@ -1,22 +1,8 @@
 const User = require("../models/user.model")
-const people = require('../assets/demoData.people.json')
 const db = require('../models/database');
 const express = require("express");
 
-exports.get = async (req, res) => {
-    // res.status(200).send([{ name: "trinh hiep", adresss: "Quang Nam" }])
-    // req voi tham so 
-    const idUser = req.query.idUser;
 
-    console.log(idUser);
-
-    const peopleById = people.filter(person => person.id == 3); // == (3=='3') , === (3!='3')
-
-    return res
-        .status(200)
-        .json(peopleById);
-
-}
 exports.post = async (req, res) => {
     const username = req.body.username
     const password = req.body.password

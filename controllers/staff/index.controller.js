@@ -4,9 +4,9 @@ const db = require('../../models/database');
 //const API = require('../api.controller')
 
 exports.get_demo = async (req, res) => {
-    console.log(req.query);
-    console.log(req.params);
-    console.log(req.body);
+    //console.log(req.query);
+    //console.log(req.params);
+    //console.log(req.body);
     var postAPI = 'http://localhost:5001/api/customers';
     fetch(postAPI)
         .then(function (response) {
@@ -14,7 +14,7 @@ exports.get_demo = async (req, res) => {
         })
         .then(function (customers) {
             //console.log(customers);
-            res.render('./customer.pug', { customers_ll: customers });
+            res.render('./customer.pug', { customers: customers });
         })
 
     //res.render('./customer.pug', { customers: customers });
@@ -91,7 +91,7 @@ exports.post_update_quantity = async(req , res)=>{
 }
 
 
-// lấy danh sách các món ăn ở trang thực đơn
+// // lấy danh sách các món ăn ở trang thực đơn
 exports.get_menu = async (req, res) => {   //======================= oke ========================
     let arrParams = [];
     const sql = 'SELECT * FROM `product` WHERE 1'
@@ -132,6 +132,11 @@ exports.get_menu = async (req, res) => {   //======================= oke =======
     }
 }
 
+
+
+exports.get_add_food = async ( req , res) =>{
+    return res.render('./menu-insert.pug');
+}
 
 
 //thêm mới món ăn
