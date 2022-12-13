@@ -1,4 +1,4 @@
-const User = require("../models/user.model")
+
 const db = require('../models/database');
 const express = require("express");
 

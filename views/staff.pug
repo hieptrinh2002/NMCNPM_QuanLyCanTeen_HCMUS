@@ -109,14 +109,16 @@ html(lang='vi')
                       th Họ tên
                       th SDT
                       th Email
-                      th Vị trí
+                      th Giới tính
+                      th Năm sinh
                   tbody
                   each staff in staffs
                     tr
-                      td staff.id
-                      td staff.name
-                      td staff.phone
-                      td staff.email
-                      td staff.position
+                      td= staff.staff_id
+                      td= staff.fullname
+                      td= staff.phone
+                      td= staff.gmail
+                      td= staff.gender
+                      td= staff.yearOfBirth
 
 

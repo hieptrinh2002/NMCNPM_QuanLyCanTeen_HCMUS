@@ -108,17 +108,20 @@ html(lang='vi')
                       th Mã hàng
                       th Tên hàng
                       th Đơn giá
-                      th Đơn vị tính
+                      //th Mô tả
                       th Số lượng trong kho
+                      th Cập nhật
                   tbody
-                  each warehouse in warehouses
+                  each product in products
                     tr
-                      td warehouse.id
-                      td warehouse.name
-                      td warehouse.price
-                      td warehouse.unit
-                      td warehouse.number
-  
+                      td= product.product_id
+                      td= product.product_name
+                      td= product.price
+                      td= product.quantity_availble
+                      //td= product.description
+                      td 
+                        a(href="kho_hang/cap_nhat_kho/" + product.product_id) Update
+                        
                 .warehouse-update__btn
                   button.warehouse__btn(type='button' onclick='dieu_huong12()') CẬP NHẬT KHO HÀNG
                   script.

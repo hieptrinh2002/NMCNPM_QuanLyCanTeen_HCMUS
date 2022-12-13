@@ -109,6 +109,7 @@ html(lang='vi')
                       th Tên món
                       th Đơn giá
                       th Số lượng hiện có
+                  
                   tbody
                   each product in products
                     tr
@@ -116,7 +117,7 @@ html(lang='vi')
                       td= product.product_name
                       td= product.price
                       td= product.quantity_availble
-
+                      
                 .menu-insert__btn
                   button.insert__btn(type='button' onclick='dieu_huong6()') THÊM MÓN ĂN
                   script.

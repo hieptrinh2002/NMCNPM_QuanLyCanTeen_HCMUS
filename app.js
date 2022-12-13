@@ -5,8 +5,11 @@ const bodyParser = require('body-parser');
 const port = process.env.PORT || 5001;
 //const apiPath = '/api/';
 
-app.use(express.json());
-app.use(express.urlencoded());
+// app.use(express.json());
+// app.use(express.urlencoded());
+
+app.use(express.json()) // for parsing application/json
+app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
 // website -- main page
 app.use(express.static('views'));
@@ -23,9 +26,10 @@ app.use('/', require('./routes/staff/index.route'));
 // app.use('/staff')
 
 
-// app.get('/login', (req, res) => {
-//     res.sendFile(__dirname + "/views/login.html");
-// })
+app.get('/them', (req, res) => {
+    res.sendFile(__dirname + "/views_2/adduser.html");
+})
+
 
 
 app.listen(port, function () {
