@@ -8,5 +8,22 @@
     "multer": "^1.4.5-lts.1",
     "mysql": "^2.18.1",
     "pug": "^3.0.2"
-  }
+  },
+  "name": "nmcnpm_quanlycanteen_hcmus",
+  "description": "đồ án nhập môn công nghệ phần mềm",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hieptrinh2002/NMCNPM_QuanLyCanTeen_HCMUS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hieptrinh2002/NMCNPM_QuanLyCanTeen_HCMUS/issues"
+  },
+  "homepage": "https://github.com/hieptrinh2002/NMCNPM_QuanLyCanTeen_HCMUS#readme"
 }
