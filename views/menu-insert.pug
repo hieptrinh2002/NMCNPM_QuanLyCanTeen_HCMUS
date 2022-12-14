@@ -9,7 +9,8 @@ html(lang='vi')
     link(rel='stylesheet' href='../../assets/css/grid.css')
     link(rel='stylesheet' href='../../assets/css/menu-insert.css')
     link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css')
-    link(href='https://fonts.googleapis.com/css?family=Roboto&display=swap' rel='stylesheet')
+    link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto&display=swap')
+    link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.15.4/css/all.css')
     link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css')
   body
     .app
@@ -24,7 +25,7 @@ html(lang='vi')
                 // Header Logo
                 .header__logo.hide-on-tablet
                   img.header__logo-img(src='../../assets/img/logo.png' alt='')
-                  a.header__logo-link(href='/')
+                  a.header__logo-link(href='/trang_chu')
                 input#mobile-search-checkbox.header__search-checkbox(type='checkbox' hidden='')
                 // Header Search
                 .header__search
@@ -48,101 +49,72 @@ html(lang='vi')
         .grid.wide
           .row.sm-gutter.app__content
             // Category
-            .col.l-2.m-0.c-0
+            .toolbar
               nav.category
                 ul.category-list
                   li.category-item
+                    i.fa-solid.fa-house
                     button.category-item__link(type='button' onclick='dieu_huong()') Trang chủ
                     script.
                       function dieu_huong(){
-                      location.assign("http://127.0.0.1:5503/index.html");
+                      location.assign("../trang_chu");
                       }
                     // <button class="category-item__link">Trang chủ</button>
                   li.category-item.category-item--active
                     button.category-item__link(type='button' onclick='dieu_huong1()') Thực đơn
                     script.
                       function dieu_huong1(){
-                      location.assign("http://127.0.0.1:5503/menu.html");
+                      location.assign("../thuc_don");
                       }
                     // <button class="category-item__link">Thực đơn</button>
                   li.category-item
                     button.category-item__link(type='button' onclick='dieu_huong2()') Kho hàng
                     script.
                       function dieu_huong2(){
-                      location.assign("http://127.0.0.1:5503/warehouse.html");
+                      location.assign("../kho_hang");
                       }
                     // <button class="category-item__link">Kho hàng</button>
                   li.category-item
                     button.category-item__link(type='button' onclick='dieu_huong3()') Khách hàng
                     script.
                       function dieu_huong3(){
-                      location.assign("http://127.0.0.1:5503/customer.html");
+                      location.assign("../khach_hang");
                       }
                     // <button class="category-item__link">Khách hàng</button>
                   li.category-item
                     button.category-item__link(type='button' onclick='dieu_huong4()') Thống kê
                     script.
                       function dieu_huong4(){
-                      location.assign("http://127.0.0.1:5503/index.html");
+                      location.assign("../thong_ke");
                       }
                     // <button class="category-item__link">Thống kê</button>
                   li.category-item
                     button.category-item__link(type='button' onclick='dieu_huong5()') Nhân viên
                     script.
                       function dieu_huong5(){
-                      location.assign("http://127.0.0.1:5503/staff.html");
+                      location.assign("../nhan_vien");
                       }
                     // <button class="category-item__link">Nhân viên</button>
                   li.category-item
                     button.category-item__link(type='button' onclick='dieu_huong6()') Tạo thẻ khách hàng
                     script.
                       function dieu_huong6(){
-                      location.assign("http://127.0.0.1:5503/createcard.html");
+                      location.assign("../tao_the");
                       }
                     // <button class="category-item__link">Tạo thẻ khách hàng</button>
             .menu-insert
-              h2.add-newfood THÊM MÓN ĂN
-              table
-                tbody
-                  tr
-                    td Tên món ăn:
-                    td
-                      input(type='text' name='foodname')
-                  tr
-                    td Đơn giá:
-                    td
-                      input(type='text' name='price')
-                  tr
-                    td Loại:
-                    td
-                      input(type='text' name='type')
-                  tr
-                    td Mô tả:
-                    td
-                      textarea(rows='3' cols='62' name='describe')
-                  tr
-                    td Thêm ảnh:
-                    td
-                      input(type='file' name='image-food' accept='image/*')
-              .menu-insert__add-food__btn
-                button.menu-insert__btn(type='button' onclick='dieu_huong7()') HOÀN THÀNH
-                script.
-                  function dieu_huong7(){
-                  location.assign("http://127.0.0.1:5503/menu.html");
-                  }
-                // <button> HOÀN THÀNH </button>
+              form#form-insert(action='/thuc_don/them_mon_an' method='POST')
+                h2.add-newfood THÊM MÓN ĂN
+                .form-group
+                  input.form-input(type='text' name='name' placeholder='Tên món ăn')
+                .form-group
+                  input.form-input(type='text' name='price' placeholder='Đơn giá')
+                .form-group
+                  input.form-input(type='text' name='type' placeholder='Loại')
+                .form-group
+                  input.form-input(type='text' name='description' placeholder='Mô tả')
+                .form-group
+                  input.form-input(type='text' name='image_link' placeholder='Thêm link ảnh')
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                //thêm link trang khi bấm hoàn thành nó nhảy nhe
+                input.form-submit(type='submit' value='HOÀN THÀNH')

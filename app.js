@@ -3,10 +3,6 @@ const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 5001;
-//const apiPath = '/api/';
-
-// app.use(express.json());
-// app.use(express.urlencoded());
 
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
@@ -23,7 +19,6 @@ app.set('views', path.join(__dirname, 'views'));
 app.use('/api', require("./routes/api.route"));//+ 'users'
 app.use('/', require('./routes/staff/index.route'));
 
-// app.use('/staff')
 
 
 app.get('/them', (req, res) => {

@@ -1,9 +1,10 @@
 .add-newfood {
     padding: 10px 10px;
     font-family:  'Times New Roman', Times, serif;
-    background-color: #7be6e2;
+    background-color:#e8898eca;
     border-radius: 2px;
     text-align: center;
+    border: 2px solid #FBDDBB;
 }
 
 input {
@@ -13,27 +14,44 @@ input {
 
 
 
-td, th {
-    padding: 10px 10px;
-}
-
-
 
 .menu-insert {
     font-size: 18px;
     padding: 10px 20px;
     font-family:  'Times New Roman', Times, serif;
-    width: 70%;
+    width: 100%;
+    margin-left: 250px;
 }
 
-.menu-insert__add-food__btn {
-    /* width: 80%;
-    height: 60px;
-    border-radius: 5px;
-    /* border: 1px solid red; */
-    /* margin: auto;
-    color: #00302E; */ 
-    font-size: 2rem;
-    color: var(--primary-color);
-    padding: 20px 300px;
+
+
+#form-insert {
+    max-width: 800px;
+    background: rgb(255, 255, 255);
+    flex-grow: 1;
+    padding: 30px 30px 40px;
+}
+
+
+.form-group{
+    margin-top: 15px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.form-input {
+    width: 100%;
+}
+
+.form-submit {
+    border: 2px solid #FBDDBB;
+    background-color: #013937;
+    color: #FBDDBB;
+    font-family:  'Times New Roman', Times, serif;
+    margin-left: 80px;
+
+}
+
+.form-submit:hover {
+    border: 2px solid #e67e22;
 }

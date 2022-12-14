@@ -25,15 +25,21 @@ table tbody td {
     padding: 10px 30px;
     font-family:  'Times New Roman', Times, serif;
     width: 100%;
+    margin-left: 300px;
 }
 
 .menu-insert__btn {
-    padding: 20px 100px;
+    padding: 20px 200px;
 }
 .insert__btn {
     height: 54px;
     width: 254px;
     font-size: 2rem;
-    background-color: tomato;
+    background-color: #013937;
+    color: #FBDDBB;
     padding: 5px 50px;
+}
+
+.insert__btn:hover {
+    border: 2px solid #e67e22;
 }

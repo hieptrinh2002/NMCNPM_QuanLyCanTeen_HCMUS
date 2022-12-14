@@ -1,9 +1,10 @@
 .money-card {
     padding: 10px 10px;
     font-family:  'Times New Roman', Times, serif;
-    background-color:lightcoral;
+    background-color:#e8898ed3;
     border-radius: 2px;
     text-align: center;
+    border: 2px solid #FBDDBB;
 }
 
 input {
@@ -13,28 +14,49 @@ input {
 
 
 
-td, th {
-    padding: 10px 10px;
-}
-
-
 
 .recharge {
     font-size: 18px;
     padding: 10px 20px;
     font-family:  'Times New Roman', Times, serif;
-    width: 70%;
+    width: 100%;
+    margin-left: 250px;
 }
 
-.recharge-card__btn {
 
-    padding: 20px 300px;
+
+
+#form-insert {
+    max-width: 900px;
+    background: rgb(255, 255, 255); 
+    /* background: url(../img/recharge.jpg);
+    background-size: cover;
+    background-position: -40px; */
+    flex-grow: 1;
+    padding: 30px 30px 40px;
+    height: 400PX;
 }
 
-.recharge__btn {
-    height: 54px;
-    width: 254px;
-    font-size: 2rem;
-    background-color: tomato;
-    padding: 5px 50px;
+
+.form-group{
+    margin-top: 15px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.form-input {
+    width: 100%;
+}
+
+.form-submit {
+    border: 2px solid #FBDDBB;
+    background-color: #013937;
+    font-family:  'Times New Roman', Times, serif;
+    color: #FBDDBB;
+    margin-left: 100px;
+
+}
+
+.form-submit:hover {
+    border: 2px solid #e67e22;
 }

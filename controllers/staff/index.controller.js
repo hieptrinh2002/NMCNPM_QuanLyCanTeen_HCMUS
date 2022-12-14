@@ -3,23 +3,26 @@ const { render } = require('pug');
 const db = require('../../models/database');
 //const API = require('../api.controller')
 
-exports.get_demo = async (req, res) => {
-    //console.log(req.query);
-    //console.log(req.params);
-    //console.log(req.body);
-    var postAPI = 'http://localhost:5001/api/customers';
-    fetch(postAPI)
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (customers) {
-            //console.log(customers);
-            res.render('./customer.pug', { customers: customers });
-        })
 
-    //res.render('./customer.pug', { customers: customers });
+
+exports.get_demo = async (req, res) => {
+    // console.log(req.query);
+    // console.log(req.params);
+    // console.log(req.body);
+    // var postAPI = 'http://localhost:5001/api/customers';
+    // fetch(postAPI)
+    //     .then(function (response) {
+    //         return response.json();
+    //     })
+    //     .then(function (customers) {
+    //         //console.log(customers);
+    //         res.render('./customer.pug', { customers: customers });
+    //     })
+
+    return res.render('./recharge.pug');
 
 }
+
 // lấy danh sách nhân viên
 exports.get_staffs = async (req, res) => {   //======================= oke ========================
     let arrParams = [];
@@ -45,6 +48,7 @@ exports.get_staffs = async (req, res) => {   //======================= oke =====
         ///return res.render('link giao dien',{notification:"render menu failed"})
     }
 }
+
 // lấy danh sách khách hàng 
 exports.get_customers = async (req, res) => {   //======================= oke ========================
     let arrParams = [];
@@ -72,51 +76,10 @@ exports.get_customers = async (req, res) => {   //======================= oke ==
     }
 }
 
-// lấy danh sách kho hàng ( các loại đồ uống đóng chai )
-exports.get_store = async(req , res) =>{
-    const sql = 'SELECT * FROM `product` WHERE product_type = 1 and status = 1'
-    try {
-        db.connectDB()
-            .then((conection) => {
-                conection.query(sql, function (err, result, fields) {
-                    if (err) throw err;
-                    else {
-                        db.closeDB(conection);
-
-                        let products = [];
-                        result.map((row) => {
-                            products.push({
-                                product_id: row.product_id,
-                                product_name: row.product_name,
-                                product_type: row.product_type,
-                                desctription: row.desctription,
-                                link_image: row.image_link,
-                                status: row.status,
-                                price: row.price,
-                                quantity_availble: row.quantity_availble
-                            })
-                        })
-
-                        console.log(products);
-
-                        return res.status(200).json("render kho hàng thành công");
-                        //return res.render('link giao dien',{products: products});
-                    }
-                })
-            })
-    }
-    catch (error) {
-        console.log("error")
-        res.status(200).json(error);
-        ///return res.render('link giao dien',{notification:"render menu failed"})
-    }
-}
-
-
 // lấy ra danh sách sản phẩm trong kho hàng
 exports.get_wavehouse = async(req , res)=>{
     let arrParams = [];
-    const sql = 'SELECT * FROM `product` WHERE product_type = 1'
+    const sql = 'SELECT * FROM `product` WHERE product_type = 1 and status = 1'
     try {
         db.connectDB()
             .then((conection) => {
@@ -137,10 +100,12 @@ exports.get_wavehouse = async(req , res)=>{
         ///return res.render('link giao dien',{notification:"render kho hàng failed"})
     }
 }
+
 // gửi yêu cầu cập nhật kho hàng với id , số lượng thêm ?---
 exports.post_update_quantity = async(req , res)=>{
-    let arrParams = [req.params.id ]; // số lượng thêm
-    let sql = 'UPDATE `product` SET `quantity_availble` = 50 WHERE `product`.`product_id` = ?;'
+    let arrParams = [req.body.quantity,req.params.id]; // id , số lượng thêm 
+    console.log(arrParams);
+    let sql = 'UPDATE `product` SET `quantity_available` = `product`.quantity_available + ? WHERE `product`.`product_id` = ?;'
     console.log(arrParams);
     try {
         db.connectDB()
@@ -149,12 +114,8 @@ exports.post_update_quantity = async(req , res)=>{
                     if (err) throw err;
                     else {
                         db.closeDB(conection);
-                                               
-                        //return res.render('link giao dien',{notification:"create card successful"})
 
-                        //return res.render('./demo.pug')// render thử file .pug
-                        // var users = [{ name: "User1", email: "user1@gmail.com" }, { name: "User2", email: "user2@gmail.com" }
-                        return res.render('./warehouse.pug');//, { users: users });
+                        return res.redirect('/kho_hang');
                     }
                 })
             })
@@ -163,6 +124,11 @@ exports.post_update_quantity = async(req , res)=>{
         res.status(200).json(error);
         ///return res.render('link giao dien',{notification:"create card fail"})
     }
+}
+
+exports.get_update_quantity = async (req , res) =>{
+    //console.log(req.params.id)
+    return res.render('./update-warehouse.pug');
 }
 
 // // lấy danh sách các món ăn ở trang thực đơn
@@ -187,7 +153,7 @@ exports.get_menu = async (req, res) => {   //======================= oke =======
                         //         link_image: row.image_link,
                         //         status: row.status,
                         //         price: row.price,
-                        //         quantity_availble: row.quantity_availble
+                        //         quantity_availble: row.quantity_avaialble
                         //     })
                         // })
 
@@ -211,17 +177,17 @@ exports.get_add_food = async ( req , res) =>{
 
 //thêm mới món ăn
 exports.post_add_food = async (req, res) => { //================= oke =======================
-    const { name, price, type, description } = req.body;
-    // console.log(req.body);
-    // console.log(req.body.name);
-    // console.log(req.body.price);
-    // console.log(req.body.type);
-    // console.log(req.body.description);
-    //console.log({name, price, type, description});
-    //console.log(req.body.name);
+    const { name, price, type, description , image_link } = req.body;
+    console.log(req.body);
+    console.log(req.body.name);
+    console.log(req.body.price);
+    console.log(req.body.type);
+    console.log(req.body.description);
+    console.log(req.body.image_link);
 
-    let arrParams = ['NULL', name, type, description , 'NULL', 1, price, 0];
-    const sql = 'INSERT INTO `product` (`product_id`, `product_name`, `product_type`, `description`, `image_link`, `status`, `price`, `quantity_availble`) VALUES (?,?,?,?,?,?,?,?)';
+    console.log({ name, price, type, description , image_link });
+    let arrParams = ['NULL', name, type, description , image_link , 1, price, 0];
+    const sql = 'INSERT INTO `product` (`product_id`, `product_name`, `product_type`, `description`, `image_link`, `status`, `price`, `quantity_available`) VALUES (?,?,?,?,?,?,?,?)';
     try {
         db.connectDB()
             .then((conection) => {
@@ -245,6 +211,7 @@ exports.post_add_food = async (req, res) => { //================= oke ==========
     }
 }
 
+// tạo thẻ khách hàng
 exports.post_Create_Card = async (req, res) => { // =================  oke  ======================================
     const { fullname, email, phone, address, money } = req.body;
     // console.log(req.body);
@@ -279,5 +246,36 @@ exports.post_Create_Card = async (req, res) => { // =================  oke  ====
         console.log("error")
         res.status(200).json(error);
         ///return res.render('link giao dien',{notification:"create card fail"})
+    }
+}
+
+exports.get_Create_Card = async ( req , res) =>{
+    return res.render('./createcard.pug');
+}
+
+// khách hàng nạp tiền
+exports.get_add_money = async (req , res ) =>{
+    return res.render('./recharge.pug');
+}
+// khách hàng nạp tiền
+exports.post_add_money = async (req , res ) =>{
+    let arrParams = [req.body.money , req.params.id]; // id , số lượng thêm 
+    console.log(arrParams);
+    let sql ='UPDATE `customer` SET `money_available` = `customer`.money_available + ?  WHERE `customer`.`customer_id` = ?'
+
+    try {
+        db.connectDB()
+            .then((conection) => {
+                conection.query(sql, arrParams, function (err, result, fields) {
+                    if (err) throw err;
+                    else {
+                        db.closeDB(conection);
+                        return res.redirect('/khach_hang');
+                    }
+                })
+            })
+    } catch (error) {
+        console.log("error")
+        res.status(200).json(error);
     }
 }
