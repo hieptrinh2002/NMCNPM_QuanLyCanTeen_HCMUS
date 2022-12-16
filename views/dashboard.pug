@@ -1,0 +1,256 @@
+doctype html
+html(lang='vi')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Canteen US
+    link(rel='stylesheet' href='./assets/css/base.css')
+    link(rel='stylesheet' href='./assets/css/grid.css')
+    link(rel='stylesheet' href='./assets/css/main.css')
+    link(rel='stylesheet' href='./assets/css/style.css')
+    link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css')
+    link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto&display=swap')
+    link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css')
+  body
+    .app(style='min-height: 100vh;')
+      header.header
+        .grid.wide
+          nav.header__navbar.hide-on-mobile-tablet
+            ul.header__navbar-list(style='width:1200px')
+              // Header with Search
+              .header-with-search
+                label.header__mobile-search(for='mobile-search-checkbox')
+                  i.header__mobile-search-icon.fas.fa-search
+                // Header Logo
+                .header__logo.hide-on-tablet
+                  img.header__logo-img(src='./assets/img/logo.png' alt='')
+                  a.header__logo-link(href='/')
+                input#mobile-search-checkbox.header__search-checkbox(type='checkbox' hidden='')
+                // Header Search
+                .header__search
+                  .header__search-input-wrap
+                    input.header__search-input(type='text' placeholder='Nhập để tìm kiếm sản phẩm')
+                  button.header__search-btn
+                    i.header__search-btn-icon.fas.fa-search
+                // Header Logo
+                .header__location.hide-on-tablet
+                  img.header__location-img(src='./assets/img/location.png' alt='')
+                  a.header__location-link(href='/')
+                // User
+                .header__user
+                  img.header__navbar-user-img(src='./assets/img/user_avatar.png' alt='')
+                  ul.header__navbar-user-menu
+                    li.header__navbar-user-item
+                      a(href='') Tài khoản của tôi
+                    li.header__navbar-user-item.header__navbar-user-item--separate
+                      a(href='') Đăng xuất
+      .app__container(style='background-color: white;')
+        .grid.wide
+          .row.sm-gutter.app__content
+            // Category
+            .toolbar
+              nav.category
+                ul.category-list
+                  li.category-item.category-item--active
+                    button.category-item__link(type='button' onclick='dieu_huong()') Trang chủ
+                    script.
+                      function dieu_huong(){
+                      location.assign("trang_chu");
+                      }
+                    // <button class="category-item__link">Trang chủ</button>
+                  li.category-item
+                    button.category-item__link(type='button' onclick='dieu_huong1()') Thực đơn
+                    script.
+                      function dieu_huong1(){
+                      location.assign("thuc_don");
+                      }
+                    // <button class="category-item__link">Thực đơn</button>
+                  li.category-item
+                    button.category-item__link(type='button' onclick='dieu_huong2()') Kho hàng
+                    script.
+                      function dieu_huong2(){
+                      location.assign("kho_hang");
+                      }
+                    // <button class="category-item__link">Kho hàng</button>
+                  li.category-item
+                    button.category-item__link(type='button' onclick='dieu_huong3()') Khách hàng
+                    script.
+                      function dieu_huong3(){
+                      location.assign("khach_hang");
+                      }
+                    // <button class="category-item__link">Khách hàng</button>
+                  li.category-item
+                    button.category-item__link(type='button' onclick='dieu_huong4()') Thống kê
+                    script.
+                      function dieu_huong4(){
+                      location.assign("thong_ke");
+                      }
+                    // <button class="category-item__link">Thống kê</button>
+                  li.category-item
+                    button.category-item__link(type='button' onclick='dieu_huong5()') Nhân viên
+                    script.
+                      function dieu_huong5(){
+                      location.assign("nhan_vien");
+                      }
+                    // <button class="category-item__link">Nhân viên</button>
+                  li.category-item
+                    button.category-item__link(type='button' onclick='dieu_huong6()') Tạo thẻ khách hàng
+                    script.
+                      function dieu_huong6(){
+                      location.assign("tao_the");
+                      }
+            .right
+              .type-food
+                button#food.type-food-eat.active Đồ ăn
+                button#drink.type-food-drink
+                  a(href='./drink.html' style='text-decoration: none; color: #39B1E4;') Nước, bánh
+              .list
+                .food
+                  .image
+                    img.img-prd(src='https://images.unsplash.com/photo-1664574654589-8f6c9b94c02d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60' alt='mi')
+                  .name.content-product-h3 Mì quảng
+                  .id 125
+                  span.price
+                    | 300000 
+                    .coin VND
+                  button.add.btn-cart(type='button') Thêm
+                .food
+                  .image
+                    img.img-prd(src='https://images.unsplash.com/photo-1664574654589-8f6c9b94c02d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60' alt='mi')
+                  .name.content-product-h3 Bun
+                  .id 126
+                  span.price
+                    | 30000 
+                    .coin VND
+                  button.add.btn-cart(type='button') Thêm
+                .food
+                  .image
+                    img.img-prd(src='https://images.unsplash.com/photo-1664574654589-8f6c9b94c02d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60' alt='mi')
+                  .name.content-product-h3 Mi tom
+                  .id 125
+                  span.price
+                    | 300000 
+                    .coin VND
+                  button.add.btn-cart(type='button') Thêm
+                .food
+                  .image
+                    img.img-prd(src='https://images.unsplash.com/photo-1664574654589-8f6c9b94c02d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60' alt='mi')
+                  .name.content-product-h3 Hu tieu
+                  .id 125
+                  span.price
+                    | 300000 
+                    .coin VND
+                  button.add.btn-cart(type='button') Thêm
+                .food
+                  .image
+                    img.img-prd(src='https://images.unsplash.com/photo-1664574654589-8f6c9b94c02d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60' alt='mi')
+                  .name.content-product-h3 Luong kho
+                  .id 125
+                  span.price
+                    | 300000 
+                    .coin VND
+                  button.add.btn-cart(type='button') Thêm
+                .food
+                  .image
+                    img.img-prd(src='https://images.unsplash.com/photo-1664574654589-8f6c9b94c02d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60' alt='mi')
+                  .name.content-product-h3 Mì quảng
+                  .id 125
+                  span.price
+                    | 300000 
+                    .coin VND
+                  button.add.btn-cart(type='button') Thêm
+                .food
+                  .image
+                    img.img-prd(src='https://images.unsplash.com/photo-1664574654589-8f6c9b94c02d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60' alt='mi')
+                  .name.content-product-h3 Mì quảng
+                  .id 125
+                  span.price
+                    | 300000 
+                    .coin VND
+                  button.add.btn-cart(type='button') Thêm
+        button
+          #cart
+            img.svg(src='./assets/img/cart-svgrepo-com.svg')
+        #myModal.modal1
+          .modal1-content
+            .modal1-header
+              h5.modal1-title Giỏ Hàng
+              span.close ×
+            .modal1-body
+              .cart-row
+                span.cart-item.cart-header.cart-column Sản Phẩm
+                span.cart-price.cart-header.cart-column Giá
+                span.cart-quantity.cart-header.cart-column Số Lượng
+              .cart-items
+
+                .cart-total
+                  strong.cart-total-title Tổng Cộng:
+                  span.cart-total-price 0VNĐ
+                .cart-payment
+                  button
+                    a(href='./payment.html') Thanh toán
+    script(src='./assets/js/index.js')
+    script.
+      // xóa cart
+      const remove_cart = document.getElementsByClassName('btn-danger');
+      for (var i = 0; i < remove_cart.length; i++) {
+      var button = remove_cart[i]
+      button.addEventListener("click", function () {
+      var button_remove = event.target
+      button_remove.parentElement.parentElement.remove()
+      })
+      }
+      // Thêm vào giỏ
+      var add_cart = document.getElementsByClassName("btn-cart");
+      for (let i = 0; i < add_cart.length; i++) {
+      var add = add_cart[i];
+      add.addEventListener("click", function (event) {
+      var button = event.target;
+      var product = button.parentElement.parentElement;
+      var img = product.parentElement.getElementsByClassName("img-prd")[i].src
+      console.log(img)
+      var title = product.getElementsByClassName("content-product-h3")[i].innerText
+      var price = product.getElementsByClassName("price")[i].innerText
+      addItemToCart(title, price, img)
+      // Khi thêm sản phẩm vào giỏ hàng thì sẽ hiển thị modal1
+      modal1.style.display = "block";
+      updatecart()
+      })
+      }
+      function addItemToCart(title, price, img) {
+      var cartRow = document.createElement('div')
+      cartRow.classList.add('cart-row')
+      var cartItems = document.getElementsByClassName('cart-items')[0]
+      var cart_title = cartItems.getElementsByClassName('cart-item-title')
+      // Nếu title của sản phẩm bằng với title mà bạn thêm vao giỏ hàng thì sẽ thông cho user.
+      for (var i = 0; i < cart_title.length; i++) {
+      if (cart_title[i].innerText == title) {
+      alert('Sản Phẩm Đã Có Trong Giỏ Hàng')
+      return
+      }
+      }
+      var cartRowContents = `
+      <div class="cart-item cart-column">
+      <img class="cart-item-image" src="${img}" width="100" height="100">
+      <span class="cart-item-title">${title}</span>
+      </div>
+      <span class="cart-price cart-column">${price}</span>
+      <div class="cart-quantity cart-column">
+      <input class="cart-quantity-input" type="number" value="1">
+      <button class="btn btn-danger" type="button">Xóa</button>
+      </div>`
+      cartRow.innerHTML = cartRowContents
+      cartItems.append(cartRow)
+      cartRow.getElementsByClassName('btn-danger')[0].addEventListener('click', function () {
+      var button_remove = event.target
+      button_remove.parentElement.parentElement.remove()
+      updatecart()
+      })
+      cartRow.getElementsByClassName('cart-quantity-input')[0].addEventListener('change', function (event) {
+      var input = event.target
+      if (isNaN(input.value) || input.value <= 0) {
+      input.value = 1;
+      }
+      updatecart()
+      })
+      }

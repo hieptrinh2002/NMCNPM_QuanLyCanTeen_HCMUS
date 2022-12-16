@@ -1,0 +1,125 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+
+.image {
+    flex: 1;
+    width: 100%;
+    background-color: red;
+    height: 100%;
+}
+.image img{
+    /* width: 100%; */
+    object-fit: cover;
+    height: 100vh;
+    width: 100%;
+}
+
+.form {
+    flex: 1;
+    /* background-color: yellow; */
+}
+
+.logo-image {
+    width: 80%;
+    margin: 30px auto;
+    /* background-color: yellowgreen; */
+}
+.logo-image img {
+    width: 100%;
+}
+
+.location {
+    display: flex;
+    flex-direction: row;
+}
+
+.location .chao {
+    flex: 1;
+    margin: auto auto;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.location .loca {
+    flex: 1;
+    width: 100%;
+}
+.loca img {
+    width: 100%;
+}
+
+.inp {
+    width: 100%;
+    /* background-color: blue; */
+    position: relative;  
+    height: 80px; 
+    margin-top: 20px;
+}
+.inp input {
+    position: absolute;
+    top: 0px;
+    left: 70px;
+    width: 80%;
+    height: 60px;
+    border-radius: 5px;
+    border: 1px solid red;
+    padding-left: 30px;
+}
+.inp input:hover {
+    border: 1px solid blue;
+}
+.inp .hide {
+    position: absolute;
+    bottom: 40px;
+    right: 90px;
+    color: blue;
+    cursor: pointer;
+}
+
+.btn {
+    width: 80%;
+    height: 60px;
+    border-radius: 5px;
+    /* border: 1px solid red; */
+    padding-left: 30px;
+    margin: auto;
+    background-color: #00302E;
+}    
+
+.btn button {
+    background-color: #00302E;
+    border: none;
+    width: 100%;
+    height: 100%;
+    margin-left: -15px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+} 
+
+.bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 100px;
+    color: #00302E;
+}
+
+.bottom a {
+    text-decoration: none;
+    color: #00302E;
+}
+
+
