@@ -19,7 +19,36 @@ exports.get_demo = async (req, res) => {
     //         res.render('./customer.pug', { customers: customers });
     //     })
 
-    return res.render('./recharge.pug');
+    let Ngay = req.query.Ngay;
+    console.log(Ngay);
+    let arrParams =[Ngay];
+    const sql = 'select b.product_id , p.product_name ,count(*) as SoLuong , SUM(p.price) as'
+            +' TongTien from bill_order_detail as b , product as p , bill_order as bill'
+            +' where b.product_id = p.product_id and DATE(bill.date_created) = ?'
+            +' GROUP BY b.product_id , p.product_name'
+            try {
+                db.connectDB()
+                    .then((conection) => {
+                        conection.query(sql, arrParams, function (err, result, fields) {
+                            if (err) throw err;
+                            else {
+                                db.closeDB(conection);
+                                console.log(result);
+                                let total = 0;
+                                result.map((item)=>{
+                                    total+=item.TongTien;
+                                })
+                                console.log(total);
+                                return res.status(200).json(result);
+                            }
+                        })
+                    })
+            }
+            catch (error) {
+                console.log("error")
+                res.status(200).json(error);
+                ///return res.render('link giao dien',{notification:"render menu failed"})
+            }
 
 }
 
@@ -64,7 +93,7 @@ exports.get_customers = async (req, res) => {   //======================= oke ==
                         let customers = result;
                         //console.log(customers);
                         //return res.status(200).json("render kho hàng thành công");
-                        return res.render('./customer.pug',{customers: customers});
+                        return res.render('./customer.pug',{customers: customers });
                     }
                 })
             })

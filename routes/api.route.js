@@ -4,7 +4,7 @@ const apiController = require('../controllers/api.controller');
 
 
 router.post('/users', apiController.post);
-// staff API
+//staff API
 router.get('/staffs', apiController.getStaffs);
 //product API
 router.get('/products', apiController.getProducts);

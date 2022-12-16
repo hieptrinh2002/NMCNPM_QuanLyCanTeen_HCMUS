@@ -2,14 +2,18 @@
     padding: 10px 10px;
     font-family:  'Times New Roman', Times, serif;
     background-color:#e8898eca;
-    border-radius: 2px;
+    border-radius: 20px;
     text-align: center;
     border: 2px solid #FBDDBB;
 }
 
 input {
     width: 600px;
-    height: 30px;
+    height: 40px;
+    border-radius: 15px;
+    border: 2px solid #F3C294;
+    color: #000;
+    background-color: #FFF8EF;
 }
 
 
@@ -28,6 +32,7 @@ input {
     background: rgb(255, 255, 255);
     flex-grow: 1;
     padding: 30px 30px 40px;
+    border-radius: 30px;
 }
 
 

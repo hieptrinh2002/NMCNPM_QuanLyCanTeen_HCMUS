@@ -25,9 +25,6 @@ router.get('/nhan_vien',controller.get_staffs);//chỉ hiển thị ra
 
 
 //router.get('/thong_ke',controller.(thong_ke)); // theo tuần, theo tháng
-
-//router.get('/nhan_vien',controller.(nhan_vien));//chỉ hiển thị ra
-
 //router.post('/thanh_toan',controller.(thanh_toan));
 
 

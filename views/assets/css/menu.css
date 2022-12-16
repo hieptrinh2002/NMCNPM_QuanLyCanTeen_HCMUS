@@ -9,15 +9,20 @@
 }
 
 td, th {
-    padding: 10px 10px;
+    padding: 15px 15px;
 }
 
 table thead th {
     text-align: center;
+    border-radius: 10px;
+    background-color: #FBDDBB;
 }
 
 table tbody td {
     text-align: center;
+    border-radius: 10px;
+    background-color: #EFEFEF;
+    font-family:  'Times New Roman', Times, serif;
 }
 
 .menu-list {
@@ -25,7 +30,7 @@ table tbody td {
     padding: 10px 30px;
     font-family:  'Times New Roman', Times, serif;
     width: 100%;
-    margin-left: 300px;
+    margin-left: 250px;
 }
 
 .menu-insert__btn {
