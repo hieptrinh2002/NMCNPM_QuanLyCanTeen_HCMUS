@@ -23,7 +23,7 @@ app.use('/', require('./routes/staff/index.route'));
 
 app.get('/them', (req, res) => {
     res.sendFile(__dirname + "/views_2/adduser.html");
-})
+})  
 
 
 

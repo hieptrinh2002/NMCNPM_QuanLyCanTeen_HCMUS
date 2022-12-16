@@ -102,13 +102,11 @@ head
           form#form-insert(action='' method='POST')
             h2.card CUNG CẤP THÔNG TIN ĐỂ TẠO THẺ KHÁCH HÀNG
             .form-group
-              input.form-input(type='text' name='id' placeholder='Mã khách hàng')
-            .form-group
-              input.form-input(type='text' name='name' placeholder='Họ và tên')
-            .form-group
-              input.form-input(type='text' name='email' placeholder='Email')
+              input.form-input(type='text' name='fullname' placeholder='Họ và tên')
             .form-group
               input.form-input(type='text' name='phone' placeholder='Số điện thoại')
             .form-group
-              input.form-input(type='text' name='address' placeholder='Địa chỉ')
+              input.form-input(type='text' name='money' placeholder='số tiền nạp ban đầu')
+            .form-group
+              input.form-input(type='text' name='email' placeholder='Email')
             input.form-submit(type='submit' value='HOÀN THÀNH' formaction='')
