@@ -2,7 +2,17 @@ const express = require('express');
 const router = express.Router();
 const controller = require('../../controllers/staff/index.controller')
 
+router.get('/', controller.get_landingPage);
+
 //router.get('/',controller.(Trang_chu));
+
+router.get('/login',controller.get_login);
+router.post('/login',controller.post_login);
+
+router.get('/signin', controller.get_signin)
+router.post('/signin')
+
+router.get('/trang_chu',controller.get_homePage);
 
 //router.use('/thuc_don',menuRoute); 
 router.get('/thuc_don',controller.get_menu); // xong
@@ -23,10 +33,13 @@ router.get('/kho_hang/cap_nhat_kho/:id',controller.get_update_quantity);
 
 router.get('/nhan_vien',controller.get_staffs);//chỉ hiển thị ra
 
-
-//router.get('/thong_ke',controller.(thong_ke)); // theo tuần, theo tháng
 //router.post('/thanh_toan',controller.(thanh_toan));
+router.get('/thong_ke',controller.get_statistical); // theo tuần, theo tháng
+router.get('/thong_ke/theo_thang', controller.get_statistical_month);
 
+
+//router.get('/thong_ke/theo_ngay', controller.get_statistical_day);
+router.post('/thong_ke/theo_ngay', controller.post_statistical_day);
 
 router.get('/demo', controller.get_demo);
 

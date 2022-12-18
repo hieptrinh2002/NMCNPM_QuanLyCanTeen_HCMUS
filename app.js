@@ -20,13 +20,6 @@ app.use('/api', require("./routes/api.route"));//+ 'users'
 app.use('/', require('./routes/staff/index.route'));
 
 
-
-app.get('/them', (req, res) => {
-    res.sendFile(__dirname + "/views_2/adduser.html");
-})  
-
-
-
 app.listen(port, function () {
     const host = 'localhost';
     console.log('Example app listening at http://%s:%s', host, port);

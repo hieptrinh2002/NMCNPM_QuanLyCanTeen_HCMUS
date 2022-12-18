@@ -20,8 +20,6 @@ table thead th {
 
 table tbody td {
     text-align: center;
-    border-radius: 10px;
-    background-color: #EFEFEF;
     font-family:  'Times New Roman', Times, serif;
 }
 

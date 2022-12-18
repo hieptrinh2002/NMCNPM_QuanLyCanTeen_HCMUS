@@ -104,70 +104,19 @@ html(lang='vi')
                 button#food.type-food-eat.active Đồ ăn
                 button#drink.type-food-drink
                   a(href='./drink.html' style='text-decoration: none; color: #39B1E4;') Nước, bánh
+
               .list
-                .food
-                  .image
-                    img.img-prd(src='https://images.unsplash.com/photo-1664574654589-8f6c9b94c02d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60' alt='mi')
-                  .name.content-product-h3 Mì quảng
-                  .id 125
-                  span.price
-                    | 300000 
-                    .coin VND
-                  button.add.btn-cart(type='button') Thêm
-                .food
-                  .image
-                    img.img-prd(src='https://images.unsplash.com/photo-1664574654589-8f6c9b94c02d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60' alt='mi')
-                  .name.content-product-h3 Bun
-                  .id 126
-                  span.price
-                    | 30000 
-                    .coin VND
-                  button.add.btn-cart(type='button') Thêm
-                .food
-                  .image
-                    img.img-prd(src='https://images.unsplash.com/photo-1664574654589-8f6c9b94c02d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60' alt='mi')
-                  .name.content-product-h3 Mi tom
-                  .id 125
-                  span.price
-                    | 300000 
-                    .coin VND
-                  button.add.btn-cart(type='button') Thêm
-                .food
-                  .image
-                    img.img-prd(src='https://images.unsplash.com/photo-1664574654589-8f6c9b94c02d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60' alt='mi')
-                  .name.content-product-h3 Hu tieu
-                  .id 125
-                  span.price
-                    | 300000 
-                    .coin VND
-                  button.add.btn-cart(type='button') Thêm
-                .food
-                  .image
-                    img.img-prd(src='https://images.unsplash.com/photo-1664574654589-8f6c9b94c02d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60' alt='mi')
-                  .name.content-product-h3 Luong kho
-                  .id 125
-                  span.price
-                    | 300000 
-                    .coin VND
-                  button.add.btn-cart(type='button') Thêm
-                .food
-                  .image
-                    img.img-prd(src='https://images.unsplash.com/photo-1664574654589-8f6c9b94c02d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60' alt='mi')
-                  .name.content-product-h3 Mì quảng
-                  .id 125
-                  span.price
-                    | 300000 
-                    .coin VND
-                  button.add.btn-cart(type='button') Thêm
-                .food
-                  .image
-                    img.img-prd(src='https://images.unsplash.com/photo-1664574654589-8f6c9b94c02d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60' alt='mi')
-                  .name.content-product-h3 Mì quảng
-                  .id 125
-                  span.price
-                    | 300000 
-                    .coin VND
-                  button.add.btn-cart(type='button') Thêm
+                each product in products
+                  .food
+                    .image
+                      img.img-prd(src= product.image_link)
+                    .name.content-product-h3 !{product.product_name}
+                    .id  !{product.quantity_available}
+                    span.price
+                      |  !{product.price} 
+                      .coin VND
+                    button.add.btn-cart(type='button') Thêm                  
+              
         button
           #cart
             img.svg(src='./assets/img/cart-svgrepo-com.svg')
