@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STATISTICAL MONTH</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/main.css">
+  <link rel="stylesheet" href="../../assets/css/grid.css">
+  <link rel="stylesheet" href="../../assets/css/statistical.css">
+  <link rel="stylesheet" href="../../assets/css/statistical_day.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="grid wide">
+        <nav class="header__navbar hide-on-mobile-tablet">
+          <ul class="header__navbar-list" style="width:1200px">
+            <!-- Header with Search-->
+            <div class="header-with-search">
+              <label class="header__mobile-search" for="mobile-search-checkbox"><i class="header__mobile-search-icon fas fa-search"></i></label>
+              <!-- Header Logo-->
+              <div class="header__logo hide-on-tablet"><img class="header__logo-img" src="../../assets/img/logo.png" alt=""><a class="header__logo-link" href="/trang_chu"></a></div>
+              <input class="header__search-checkbox" id="mobile-search-checkbox" type="checkbox" hidden="">
+              <!-- Header Search-->
+              <div class="header__search">
+                <div class="header__search-input-wrap">
+                  <input class="header__search-input" type="text" placeholder="Nhập để tìm kiếm sản phẩm">
+                </div>
+                <button class="header__search-btn"><i class="header__search-btn-icon fas fa-search"></i></button>
+              </div>
+              <!-- Header Logo-->
+              <div class="header__location hide-on-tablet"><img class="header__location-img" src="../../assets/img/location.png" alt=""><a class="header__location-link" href="/"></a></div>
+              <!-- User-->
+              <div class="header__user"><img class="header__navbar-user-img" src="../../assets/img/user_avatar.png" alt="">
+                <ul class="header__navbar-user-menu">
+                  <li class="header__navbar-user-item"><a href="">Tài khoản của tôi</a></li>
+                  <li class="header__navbar-user-item header__navbar-user-item--separate"><a href="">Đăng xuất</a></li>
+                </ul>
+              </div>
+            </div>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="app__container">
+      <div class="grid wide">
+        <div class="row sm-gutter app__content">
+          <!-- Category-->
+          <div class="toolbar">
+            <nav class="category">
+              <ul class="category-list">
+                <li class="category-item">
+                  <button class="category-item__link" type="button" onclick="dieu_huong()">Trang chủ</button>
+                  <script>
+                    function dieu_huong() {
+                      location.assign("../trang_chu");
+                    }
+                  </script>
+                  <!-- <button class="category-item__link">Trang chủ</button>-->
+                </li>
+                <li class="category-item">
+                  <button class="category-item__link" type="button" onclick="dieu_huong1()">Thực đơn</button>
+                  <script>
+                    function dieu_huong1() {
+                      location.assign("../thuc_don");
+                    }
+                  </script>
+                  <!-- <button class="category-item__link">Thực đơn</button>-->
+                </li>
+                <li class="category-item">
+                  <button class="category-item__link" type="button" onclick="dieu_huong2()">Kho hàng</button>
+                  <script>
+                    function dieu_huong2() {
+                      location.assign("../kho_hang");
+                    }
+                  </script>
+                  <!-- <button class="category-item__link">Kho hàng</button>-->
+                </li>
+                <li class="category-item">
+                  <button class="category-item__link" type="button" onclick="dieu_huong3()">Khách hàng</button>
+                  <script>
+                    function dieu_huong3() {
+                      location.assign("../khach_hang");
+                    }
+                  </script>
+                  <!-- <button class="category-item__link">Khách hàng</button>-->
+                </li>
+                <li class="category-item category-item--active">
+                  <button class="category-item__link" type="button" onclick="dieu_huong4()">Thống kê</button>
+                  <script>
+                    function dieu_huong4() {
+                      location.assign("../thong_ke");
+                    }
+                  </script>
+                  <!-- <button class="category-item__link">Thống kê</button>-->
+                </li>
+                <li class="category-item">
+                  <button class="category-item__link" type="button" onclick="dieu_huong5()">Nhân viên</button>
+                  <script>
+                    function dieu_huong5() {
+                      location.assign("../nhan_vien");
+                    }
+                  </script>
+                  <!-- <button class="category-item__link">Nhân viên</button>-->
+                </li>
+                <li class="category-item">
+                  <button class="category-item__link" type="button" onclick="dieu_huong6()">Tạo thẻ khách hàng</button>
+                  <script>
+                    function dieu_huong6() {
+                      location.assign("../tao_the");
+                    }
+                  </script>
+                  <!-- <button class="category-item__link">Tạo thẻ khách hàng</button>-->
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <div class="statistical">
+            <form id="form-insert" action="/thong_ke/theo_ngay" method="POST">
+              <label for="">Nhập ngày: </label>
+              <div class="form-group">
+                <input class="form-input" type="date" name="date">
+              </div>
+              <input class="form-submit" type="submit" value="THỐNG KÊ">
+              <button class="statistical-month" type="button" onclick="dieu_huong15()">THỐNG KÊ THEO THÁNG</button>
+              <script>
+                function dieu_huong15() {
+                  location.assign("/thong_ke/theo_thang");
+                }
+              </script>
+            </form>
+          </div>
+            
+
+          <div class="statistical-list">
+            <div>
+              <canvas id="myChart" , style="height: 500px !important;"></canvas>
+            </div>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script>
+              const ctx = document.getElementById('myChart');
+              console.log(ctx);
+
+              new Chart(ctx, {
+                type: 'line',
+                data: {
+                  labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+                  datasets: [{
+                    label: 'Thống kê thu nhập',
+                    data: [80, 43, 13, 22, 55, 76, 3, 2, 5, 8, 100, 7], //,
+                    borderWidth: 1
+                  }]
+                },
+                options: {
+                  scales: {
+                    y: {
+                      beginAtZero: true
+                    }
+                  }
+                }
+              });
+            </script>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

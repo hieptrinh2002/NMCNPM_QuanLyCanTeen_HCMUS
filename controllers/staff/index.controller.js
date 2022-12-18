@@ -318,11 +318,6 @@ exports.post_add_money = async (req , res ) =>{
     }
 }
 
-
-
-
-
-
 exports.get_statistical = async(req,res)=>{
     return res.render('./statistical.pug')
 }
