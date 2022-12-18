@@ -1,0 +1,32 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Document
+    link(rel='stylesheet' href='./assets/css/login.css')
+  body
+    .container
+      .image
+        img(src='https://saodieu.vn/media/Bai%20Viet%20-%20T62016/Saodieu%20-%2010%20mon%20an%201.jpg' alt='')
+      // 
+      form.form(action='login' method = 'post')
+        .logo-image
+          img(src='./assets/img/logo.png' alt='')
+        .location
+          .chao Xin chào!!!
+          .loca
+            img(src='./assets/img/location.png' alt='')
+        .inp
+          input(type='text' name='username' placeholder='Tên đăng nhập')
+        .inp
+          input(type='text' name='password' placeholder='Mật khẩu')
+          .hide Hiện
+        .btn
+          button(type='submit')
+            | Đăng nhập
+        .bottom
+          a(href='./signin_page.html') Tạo tài khoản
+          a(href='./signin_page.html') Quên mật khẩu
+      // 

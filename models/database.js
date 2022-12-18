@@ -13,7 +13,7 @@ module.exports.connectDB = () => {
             host: '127.0.0.1',
             user: 'root',
             database: 'quanlycantin_nmcnpm',
-            port: "3307"
+            port: "3306"
         });
         con.connect((err) => {
             if (err) {
