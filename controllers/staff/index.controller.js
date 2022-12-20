@@ -1,8 +1,7 @@
 const { response, query } = require('express');
 const { render } = require('pug');
 const db = require('../../models/database');
-const jsStringify = require('js-stringify');
-//const API = require('../api.controller')
+
 
 exports.get_landingPage = async(req, res)=>{
     return res.render('./landing_page.pug');
@@ -67,22 +66,7 @@ exports.post_login = async (req, res) => {
 exports.get_signin = async (req, res)=>{
     return res.render('./signin_page.pug');
 }
-exports.get_demo = async (req, res) => {
-    // console.log(req.query);
-    // console.log(req.params);
-    // console.log(req.body);
-    // var postAPI = 'http://localhost:5001/api/customers';
-    // fetch(postAPI)
-    //     .then(function (response) {
-    //         return response.json();
-    //     })
-    //     .then(function (customers) {
-    //         //console.log(customers);
-    //         res.render('./customer.pug', { customers: customers });
-    //     })
 
-
-}
 // lấy danh sách nhân viên
 exports.get_staffs = async (req, res) => {   //======================= oke ========================
     let arrParams = [];
@@ -145,17 +129,33 @@ exports.get_wavehouse = async(req , res)=>{
                     if (err) throw err;
                     else {
                         db.closeDB(conection);
+                        result.map((item) => {
+                            if(item.product_type == 1)
+                            {
+                                item.product_type = "hàng tiêu dùng"
+                            }
+                            else{
+                                item.product_type = "thức ăn trong ngày"
+                            }
+                            if(item.status == 1)
+                            {
+                                item.status = "đang bán"
+                            }
+                            else
+                            {
+                                item.status = "ngưng bán"
+                            }
+                        })
                         let products = result;
-                        //return res.status(200).json("render kho hàng thành công");
+
                         return res.render('./warehouse.pug',{products: products});
                     }
                 })
             })
     }
     catch (error) {
-        console.log("error")
-        res.status(200).json(error);
-        ///return res.render('link giao dien',{notification:"render kho hàng failed"})
+        console.log("error warehouse.pug")
+        return res.status(200).json(error);
     }
 }
 // gửi yêu cầu cập nhật kho hàng với id , số lượng thêm ?---
@@ -177,17 +177,16 @@ exports.post_update_quantity = async(req , res)=>{
                 })
             })
     } catch (error) {
-        console.log("error")
-        res.status(200).json(error);
-        ///return res.render('link giao dien',{notification:"create card fail"})
+        console.log("error : cập nhật kho hàng thất bại")
+        return res.status(200).json(error);
+       
     }
 }
 exports.get_update_quantity = async (req , res) =>{
-    //console.log(req.params.id)
     return res.render('./update-warehouse.pug');
 }
 // // lấy danh sách các món ăn ở trang thực đơn
-exports.get_menu = async (req, res) => {   //======================= oke ========================
+exports.get_menu = async (req, res) => {   
     let arrParams = [];
     const sql = 'SELECT * FROM `product` WHERE 1'
     try {
@@ -198,22 +197,26 @@ exports.get_menu = async (req, res) => {   //======================= oke =======
                     else {
                         db.closeDB(conection);
 
+                       
+                        result.map((item) => {
+                            if(item.product_type == 1)
+                            {
+                                item.product_type = "hàng tiêu dùng"
+                            }
+                            else{
+                                item.product_type = "thức ăn trong ngày"
+                            }
+                            if(item.status == 1)
+                            {
+                                item.status = "đang bán"
+                            }
+                            else
+                            {
+                                item.status = "ngưng bán"
+                            }
+                        })
+                       
                         let products = result;
-                        // result.map((row) => {
-                        //     products.push({
-                        //         product_id: row.product_id,
-                        //         product_name: row.product_name,
-                        //         product_type: row.product_type,
-                        //         desctription: row.desctription,
-                        //         link_image: row.image_link,
-                        //         status: row.status,
-                        //         price: row.price,
-                        //         quantity_availble: row.quantity_avaialble
-                        //     })
-                        // })
-
-                        //console.log(products);
-                        //return res.status(200).json("render kho hàng thành công");
                         return res.render('./menu.pug',{products: products});
                     }
                 })
@@ -221,13 +224,15 @@ exports.get_menu = async (req, res) => {   //======================= oke =======
     }
     catch (error) {
         console.log("error")
-        res.status(200).json(error);
-        ///return res.render('link giao dien',{notification:"render menu failed"})
+        return res.status(200).json(error);
     }
 }
+
+
 exports.get_add_food = async ( req , res) =>{
     return res.render('./menu-insert.pug');
 }
+
 //thêm mới món ăn
 exports.post_add_food = async (req, res) => { //================= oke =======================
     const { name, price, type, description , image_link } = req.body;
@@ -242,10 +247,6 @@ exports.post_add_food = async (req, res) => { //================= oke ==========
                     if (err) throw err;
                     else {
                         db.closeDB(conection);
-                        
-                        //return res.status(200).json("thêm món thành công thành công");
-                        //return res.status(200).json({notification:"add food successful !!"})
-                        //return res.render('./menu-insert.pug');
                         return res.redirect('/thuc_don');
                     }
                 })
@@ -254,18 +255,16 @@ exports.post_add_food = async (req, res) => { //================= oke ==========
     catch (error) {
         console.log("error")
         res.status(200).json(error);
-        ///return res.render('link giao dien',{notification:"add food fail"})
     }
 }
 // tạo thẻ khách hàng
-exports.post_Create_Card = async (req, res) => { // =================  oke  ======================================
-    const { fullname, email, phone, address, money } = req.body;
+exports.post_Create_Card = async (req, res) => { 
     let arrParams = [
         req.body.fullname,
         req.body.phone,
         req.body.money,
         req.body.email,
-        Math.floor(Math.random() * 99999999 + 10000000) // test , cần điều chỉnh
+        Math.floor(Math.random() * 99999999 + 10000000) 
     ]
     console.log(arrParams);
 
@@ -278,19 +277,19 @@ exports.post_Create_Card = async (req, res) => { // =================  oke  ====
                     else {
                         db.closeDB(conection);
 
-                        //return res.redirect('/khach_hang');
+                        return res.redirect('/khach_hang');
                     }
                 })
             })
     } catch (error) {
         console.log("error")
-        res.status(200).json(error);
-        ///return res.render('link giao dien',{notification:"create card fail"})
+        return res.status(200).json(error);
     }
 }
 exports.get_Create_Card = async ( req , res) =>{
     return res.render('./createcard.pug');
 }
+
 // khách hàng nạp tiền
 exports.get_add_money = async (req , res ) =>{
     return res.render('./recharge.pug');
@@ -322,15 +321,13 @@ exports.get_statistical = async(req,res)=>{
     return res.render('./statistical.pug')
 }
 
-// exports.get_statistical_day = async(req,res)=>{
-//     return res.render('./statistical_day.pug')
-// }
 
 exports.post_statistical_day = async(req,res)=>{
-    let date = req.body.date;
-    let arrParams =[date];
+    console.log(req.body.date);
+    let arrParams =[req.body.date];
+
     const sql = 'select b.product_id , p.product_name , p.price ,count(*) as SoLuong , SUM(p.price) as'
-            +' TongTien , bill.date_created as Ngay from bill_order_detail as b , product as p , bill_order as bill'
+            +' TongTien , (DATE(bill.date_created)) as Ngay from bill_order_detail as b , product as p , bill_order as bill'
             +' where b.product_id = p.product_id and DATE(bill.date_created) = ?'
             +' GROUP BY b.product_id , p.product_name'
             try {
@@ -344,6 +341,7 @@ exports.post_statistical_day = async(req,res)=>{
                                 let total = 0;
                                 result.map((item)=>{
                                     total+=item.TongTien;
+                                    item.Ngay = req.body.date;
                                 })
                                
                                 let products = result;
@@ -362,11 +360,13 @@ exports.post_statistical_day = async(req,res)=>{
             }
 }
 exports.get_statistical_month = async(req,res)=>{
-    const sql = 'CALL `thongKe`()'
+    let today = new Date();
+
+    const sql = 'CALL `thongKe`(?)'
             try {
                 db.connectDB()
                     .then((conection) => {
-                        conection.query(sql, function (err, result, fields) {
+                        conection.query(sql,[today.getFullYear()], function (err, result, fields) {
                             if (err) throw err;
                             else {
                                 db.closeDB(conection);
@@ -380,7 +380,11 @@ exports.get_statistical_month = async(req,res)=>{
                                     }     
                                 })
                                 console.log(array_EachMonth);
-                                return res.render('./statistical_month.pug',{array_EachMonth : array_EachMonth});
+                                return res.render('./statistical_month.pug',
+                                {
+                                    array_EachMonth : array_EachMonth,
+                                    year: today.getFullYear()
+                                });
                               
                             }
                         })

@@ -8,11 +8,11 @@ router.get('/', controller.get_landingPage);
 
 router.get('/login',controller.get_login);
 router.post('/login',controller.post_login);
-
 router.get('/signin', controller.get_signin)
 router.post('/signin')
-
 router.get('/trang_chu',controller.get_homePage);
+
+
 
 //router.use('/thuc_don',menuRoute); 
 router.get('/thuc_don',controller.get_menu); // xong
@@ -41,6 +41,5 @@ router.get('/thong_ke/theo_thang', controller.get_statistical_month);
 //router.get('/thong_ke/theo_ngay', controller.get_statistical_day);
 router.post('/thong_ke/theo_ngay', controller.post_statistical_day);
 
-router.get('/demo', controller.get_demo);
 
 module.exports = router;
