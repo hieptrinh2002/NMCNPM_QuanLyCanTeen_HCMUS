@@ -61,11 +61,11 @@ const RegisterController = async (req,res) => {
     
 }
 
-const LoginController = async(request, res) => 
+const LoginController = async(req, res,next) => 
 {
     const userInput = {
-        username: request.body.username,
-        password: request.body.password
+        username: req.body.username,
+        password: req.body.password
     }
     console.log(userInput.username);
     console.log(userInput.password);
@@ -84,8 +84,9 @@ const LoginController = async(request, res) =>
                     {
                         if(/*bcrypt.compareSync(userInput.password,data[0].password)*/userInput.password ==result[0].password ){
                             console.log('1');
-                            request.session.user = result[0];
-                            res.redirect('/trang_chu');
+                            req.session.user = result[0];
+                            //console.log(JSON.stringify(req.session.user));
+                            res.redirect('/index');
                             //db.closeDB();  
                             
                         }

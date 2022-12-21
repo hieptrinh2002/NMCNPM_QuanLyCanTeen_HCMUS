@@ -11,7 +11,6 @@ html(lang='vi')
     link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css')
     link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto&display=swap')
     link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css')
-    script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js")
   body
     .app(style='min-height: 100vh;')
       header.header
@@ -49,13 +48,12 @@ html(lang='vi')
         .grid.wide
           .row.sm-gutter.app__content
             // Category
-            //.col.l-2.m-0.c-0(style='margin-top: 50px;')
-            .toolbar
+            .col.l-2.m-0.c-0(style='margin-top: 50px;')
               nav.category
                 ul.category-list
                   li.category-item.category-item--active
                     button.category-item__link
-                      a(style='text-decoration: none;' href='./index')
+                      a(style='text-decoration: none;' href='./index.html')
                         | Trang
                         | chủ
                   li.category-item
@@ -84,19 +82,74 @@ html(lang='vi')
                   i.fa.fa-shopping-basket(aria-hidden='true')
                   |                                 Giỏ Hàng
                 button#drink.type-food-drink(style='visibility: hidden;')
-                  a(href='./drink' style='text-decoration: none; color: #39B1E4;') Nước, bánh
+                  a(href='./drink.html' style='text-decoration: none; color: #39B1E4;') Nước, bánh
               .list
-                - for (var i = 0; i < foodStore.length; i++ )
-                    .food
-                        .image
-                          img.img-prd(src=foodStore[i].image_link alt='mi')
-                        .name.content-product-h3 #{foodStore[i].product_name}
-                        .id #{foodStore[i].product_id}
-                        span.price
-                          | #{foodStore[i].price}
-                          .coin VND
-                        button.add.btn-cart(type='button') Thêm
-                
+                .food
+                  .image
+                    img.img-prd(src='https://images.unsplash.com/photo-1664574654589-8f6c9b94c02d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60' alt='mi')
+                  .name.content-product-h3 Hu tieu Nam Vang Quang Chua LAn BEn 
+                  .id 125
+                  span.price
+                    | 300000 
+                    .coin VND
+                  input.quantity(type='number' value='1')
+                  button.add.btn-cart(type='button') Thêm
+                .food
+                  .image
+                    img.img-prd(src='https://images.unsplash.com/photo-1664574654589-8f6c9b94c02d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60' alt='mi')
+                  .name.content-product-h3 Bun
+                  .id 126
+                  span.price
+                    | 30000 
+                    .coin VND
+                  input.quantity(type='number' value='1')
+                  button.add.btn-cart(type='button') Thêm
+                .food
+                  .image
+                    img.img-prd(src='https://images.unsplash.com/photo-1664574654589-8f6c9b94c02d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60' alt='mi')
+                  .name.content-product-h3 Mi tom
+                  .id 125
+                  span.price
+                    | 300000 
+                    .coin VND
+                  input.quantity(type='number' value='1')
+                  button.add.btn-cart(type='button') Thêm
+                .food
+                  .image
+                    img.img-prd(src='https://images.unsplash.com/photo-1664574654589-8f6c9b94c02d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60' alt='mi')
+                  .name.content-product-h3 Hu tieu
+                  .id 125
+                  span.price
+                    | 300000 
+                    .coin VND
+                  button.add.btn-cart(type='button') Thêm
+                .food
+                  .image
+                    img.img-prd(src='https://images.unsplash.com/photo-1664574654589-8f6c9b94c02d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60' alt='mi')
+                  .name.content-product-h3 Luong kho
+                  .id 125
+                  span.price
+                    | 300000 
+                    .coin VND
+                  button.add.btn-cart(type='button') Thêm
+                .food
+                  .image
+                    img.img-prd(src='https://images.unsplash.com/photo-1664574654589-8f6c9b94c02d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60' alt='mi')
+                  .name.content-product-h3 Mì quảng
+                  .id 125
+                  span.price
+                    | 300000 
+                    .coin VND
+                  button.add.btn-cart(type='button') Thêm
+                .food
+                  .image
+                    img.img-prd(src='https://images.unsplash.com/photo-1664574654589-8f6c9b94c02d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60' alt='mi')
+                  .name.content-product-h3 Mì quảngz
+                  .id 125
+                  span.price
+                    | 300000 
+                    .coin VND
+                  button.add.btn-cart(type='button') Thêm
         #myModal.modal
           .modal-content
             .modal-header
@@ -104,19 +157,32 @@ html(lang='vi')
               span.close ×
             .modal-body
               .cart-row
-                span.cart-id.cart-header.cart-column ID
                 span.cart-item.cart-header.cart-column Sản Phẩm
                 span.cart-price.cart-header.cart-column Giá
                 span.cart-quantity.cart-header.cart-column Số Lượng
-              .cart-items
-                .cart-total
-                  strong.cart-total-title Tổng Cộng:
-                  span.cart-total-price 0VNĐ
-                form(onsubmit = "orderOK()")  
-                  .cart-payment
-                    input(type='hidden',name='food',value = '12345')
-                    button(type = 'submit') PressMe
-                    
+              form(action='./index.html' method='POST')
+                .cart-items
+                  //
+                    <div class="cart-row">
+                    <div class="cart-item cart-column">
+                    <img class="cart-item-image"
+                    src="https://bizweb.dktcdn.net/thumb/large/100/228/168/products/sp1-a45a32a1-38d4-4a8a-9c37-e936013858b2.jpg?v=1575877003000"
+                    width="100" height="100">
+                    <span class="cart-item-title">Máy Bơm Chìm Hộ Gia Đình QDX 1500W 220VAC 40L/1min
+                    H=8m</span>
+                    </div>
+                    <span class="cart-price cart-column">1599000đ</span>
+                    <div class="cart-quantity cart-column">
+                    <input class="cart-quantity-input" type="number" value="2">
+                    <button class="btn btn-danger" type="button">Xóa</button>
+                    </div>
+                    </div>
+              .cart-total
+                strong.cart-total-title Tổng Cộng:
+                span.cart-total-price 0VNĐ
+              .cart-payment
+                button
+                  a(href='./payment.html') Thanh toán
     script(src='./assets/js/index.js')
     script.
       // xóa cart
@@ -139,14 +205,13 @@ html(lang='vi')
       console.log(img)
       var title = product.getElementsByClassName("content-product-h3")[i].innerText
       var price = product.getElementsByClassName("price")[i].innerText
-      var product_id = product.getElementsByClassName("id")[i].innerText
-      addItemToCart(product_id,title, price, img)
+      addItemToCart(title, price, img)
       // Khi thêm sản phẩm vào giỏ hàng thì sẽ hiển thị modal
       // modal.style.display = "block";
       updatecart()
       })
       }
-      function addItemToCart(product_id,title, price, img) {
+      function addItemToCart(title, price, img) {
       var cartRow = document.createElement('div')
       cartRow.classList.add('cart-row')
       var cartItems = document.getElementsByClassName('cart-items')[0]
@@ -160,7 +225,6 @@ html(lang='vi')
       }
       var cartRowContents = `
       <div class="cart-item cart-column">
-      <span class = "cart-id cart-column">${product_id}</span>
       <img class="cart-item-image" src="${img}" width="100" height="100">
       <span class="cart-item-title">${title}</span>
       </div>
@@ -171,6 +235,7 @@ html(lang='vi')
       </div>`
       cartRow.innerHTML = cartRowContents
       cartItems.append(cartRow)
+      // cartItems.after(cartRow)
       cartRow.getElementsByClassName('btn-danger')[0].addEventListener('click', function () {
       var button_remove = event.target
       button_remove.parentElement.parentElement.remove()
@@ -183,40 +248,12 @@ html(lang='vi')
       }
       updatecart()
       })
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", yourUrl, true);
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.send(JSON.stringify({
+      image: img ,
+      name: title,
+      money: price
+      }));
       }
-    
-    
-    script.
-      function addProduct(foodItemName) {
-        document.getElementById('food-item-' + foodItemName).innerHTML = parseInt(document.getElementById('food-item-' + foodItemName).innerHTML) + 1;
-      }
-
-      function removeProduct(foodItemName) {
-        if (parseInt(document.getElementById('food-item-' + foodItemName).innerHTML) > 0) {
-          document.getElementById('food-item-' + foodItemName).innerHTML = parseInt(document.getElementById('food-item-' + foodItemName).innerHTML) - 1;
-        }
-      }
-
-      function orderOK() {
-        var cartItems = document.getElementsByClassName('cart-item cart-column')
-        var cart_title = cartItems.getElementsByClassName('cart-item-title')
-        var list = [];
-        for (let i = 0; i < cartItems.length; i++) {
-          let dat = {
-            name:"1",
-            name:"2"
-          }
-          list.push(dat);
-        }
-        list = list.filter(ele => ele.count != 0);
-        console.log(list);
-        return list
-        /*$.ajax({
-          method:"POST",
-          url: "localhost:5001/index",
-          data: {
-            order_items: list
-          }
-        });*/
-      }
-
