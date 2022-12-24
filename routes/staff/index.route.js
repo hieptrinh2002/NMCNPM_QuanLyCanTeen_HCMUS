@@ -17,6 +17,7 @@ router.get('/trang_chu',controller.get_homePage);
 router.get('/thuc_don',controller.get_menu); // xong
 router.post('/thuc_don/them_mon_an', controller.post_add_food)// xong
 router.get('/thuc_don/them_mon_an', controller.get_add_food);
+router.post('/thuc_don/reset', controller.post_reset);// xong
 
 
 //khách hàng

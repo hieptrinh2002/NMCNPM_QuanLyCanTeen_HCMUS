@@ -101,7 +101,32 @@ html(lang='vi')
                       location.assign("tao_the");
                       }
                     // <button class="category-item__link">Tạo thẻ khách hàng</button>
-            
+            //- .warehouse
+            //-   .warehouse-list
+            //-     table
+            //-       thead
+            //-         tr
+            //-           th Mã hàng
+            //-           th Tên hàng
+            //-           th Đơn giá
+            //-           th Số lượng
+            //-           th Loại
+            //-           th Tình trạng
+            //-           th Cập nhật
+            //-       tbody
+            //-       each product in products
+            //-         tr
+            //-           td= product.product_id
+            //-           td= product.product_name
+            //-           td= product.price
+            //-           td= product.quantity_available
+            //-           td= product.product_type
+            //-           td= product.status
+            //-           td  
+            //-             .update-btn
+            //-               a.js-update(href="/kho_hang/cap_nhat_kho/" + product.product_id) Update
+   
+
     form#form-insert(action='' method='POST')
       .modal.js-modal
         .modal-container
@@ -114,7 +139,7 @@ html(lang='vi')
 
           .modal-body
             label.modal-label(for='quantity')
-              | Số lượng thêm:
+              | Số lượng cập nhật:
             input#quantity.modal-input(type='number' name='quantity' placeholder='Enter the number of updates' required='')
             
             input.complete_btn(type='submit' value='HOÀN THÀNH')

@@ -105,7 +105,12 @@ html(lang='vi')
               form#form-insert(action='/thong_ke/theo_ngay' method='POST')
                 label(for='') Nhập ngày: 
                 .form-group
-                  input.form-input(type='date' name='date')
+                  input.form-input(type='date' name='date' id ="dateid")
+
+                script.
+                  
+                  document.getElementById("dateid").value = '!{date}';
+                  
                 input.form-submit(type='submit' value='THỐNG KÊ')
                 button.statistical-month(type='button' onclick='dieu_huong15()') THỐNG KÊ THEO THÁNG
                 script.

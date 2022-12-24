@@ -1,0 +1,128 @@
+doctype html
+html(lang='vi')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title CUSTOMER
+    link(rel='stylesheet' href='./assets/css/base.css')
+    link(rel='stylesheet' href='./assets/css/main.css')
+    link(rel='stylesheet' href='./assets/css/grid.css')
+    link(rel='stylesheet' href='./assets/css/customer.css')
+    link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css')
+    link(href='https://fonts.googleapis.com/css?family=Roboto&display=swap' rel='stylesheet')
+    link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css')
+  body
+    .app
+      header.header
+        .grid.wide
+          nav.header__navbar.hide-on-mobile-tablet
+            ul.header__navbar-list(style='width:1200px')
+              // Header with Search
+              .header-with-search
+                label.header__mobile-search(for='mobile-search-checkbox')
+                  i.header__mobile-search-icon.fas.fa-search
+                // Header Logo
+                .header__logo.hide-on-tablet
+                  img.header__logo-img(src='./assets/img/logo.png' alt='')
+                  a.header__logo-link(href='/')
+                input#mobile-search-checkbox.header__search-checkbox(type='checkbox' hidden='')
+                // Header Search
+                form#form-search(action='' method='POST')
+                  .header__search(style='width: 700px;')
+                    .header__search-input-wrap
+                      input.header__search-input(type='text' placeholder='Nhập để tìm kiếm ')
+                    button.header__search-btn(type='submit')
+                      i.header__search-btn-icon.fas.fa-search
+                // Header Logo
+                .header__location.hide-on-tablet
+                  img.header__location-img(src='./assets/img/location.png' alt='')
+                  a.header__location-link(href='/')
+                // User
+                .header__user
+                  img.header__navbar-user-img(src='./assets/img/user_avatar.png' alt='')
+                  ul.header__navbar-user-menu
+                    li.header__navbar-user-item
+                      a(href='') Tài khoản của tôi
+                    li.header__navbar-user-item.header__navbar-user-item--separate
+                      a(href='') Đăng xuất
+      .app__container
+        .grid.wide
+          .row.sm-gutter.app__content
+            // Category
+            .toolbar
+              nav.category
+                ul.category-list
+                  li.category-item
+                    button.category-item__link(type='button' onclick='dieu_huong()') Trang chủ
+                    script.
+                      function dieu_huong(){
+                      location.assign("trang_chu");
+                      }
+                    // <button class="category-item__link">Trang chủ</button>
+                  li.category-item
+                    button.category-item__link(type='button' onclick='dieu_huong1()') Thực đơn
+                    script.
+                      function dieu_huong1(){
+                      location.assign("thuc_don");
+                      }
+                    // <button class="category-item__link">Thực đơn</button>
+                  li.category-item
+                    button.category-item__link(type='button' onclick='dieu_huong2()') Kho hàng
+                    script.
+                      function dieu_huong2(){
+                      location.assign("kho_hang");
+                      }
+                    // <button class="category-item__link">Kho hàng</button>
+                  li.category-item.category-item--active
+                    button.category-item__link(type='button' onclick='dieu_huong3()') Khách hàng
+                    script.
+                      function dieu_huong3(){
+                      location.assign("khach_hang");
+                      }
+                    // <button class="category-item__link">Khách hàng</button>
+                  li.category-item
+                    button.category-item__link(type='button' onclick='dieu_huong4()') Thống kê
+                    script.
+                      function dieu_huong4(){
+                      location.assign("thong_ke");
+                      }
+                    // <button class="category-item__link">Thống kê</button>
+                  li.category-item
+                    button.category-item__link(type='button' onclick='dieu_huong5()') Nhân viên
+                    script.
+                      function dieu_huong5(){
+                      location.assign("nhan_vien");
+                      }
+                    // <button class="category-item__link">Nhân viên</button>
+                  li.category-item
+                    button.category-item__link(type='button' onclick='dieu_huong6()') Tạo thẻ khách hàng
+                    script.
+                      function dieu_huong6(){
+                      location.assign("tao_the");
+                      }
+                    // <button class="category-item__link">Tạo thẻ khách hàng</button>
+            .customer
+              .customer-list
+                table
+                  thead
+                    tr
+                      th Mã KH
+                      th Họ tên
+                      th Số điện thoại
+                      th Email
+                      th Mã thẻ
+                      th Số tiền còn lại
+                      th Nạp tiền
+                  tbody
+                  each customer in customers
+                    tr
+                      td= customer.customer_id
+                      td= customer.fullname
+                      td= customer.phone
+                      td= customer.email
+                      td= customer.id_card
+                      td= customer.money_available
+                      td
+                        .recharge-btn
+                          a.money(href="/khach_hang/nap_tien/" + customer.customer_id) Nạp tiền
+        

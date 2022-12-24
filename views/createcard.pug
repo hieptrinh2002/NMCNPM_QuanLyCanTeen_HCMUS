@@ -100,13 +100,22 @@ head
                 // <button class="category-item__link">Tạo thẻ khách hàng</button>
         .create-card
           form#form-insert(action='' method='POST')
-            h2.card CUNG CẤP THÔNG TIN ĐỂ TẠO THẺ KHÁCH HÀNG
+            h2.card TẠO THẺ KHÁCH HÀNG
+            
+            label Họ và tên: 
             .form-group
-              input.form-input(type='text' name='fullname' placeholder='Họ và tên')
+              input.form-input(type='text' name='fullname')
+            
+            label Số điện thoại: 
             .form-group
-              input.form-input(type='text' name='phone' placeholder='Số điện thoại')
+              input.form-input(type='text' name='phone' )
+            
+            label Số tiền nạp ban đầu: 
             .form-group
-              input.form-input(type='text' name='money' placeholder='số tiền nạp ban đầu')
+              input.form-input(type='text' name='money' )
+            
+            label Email: 
             .form-group
-              input.form-input(type='text' name='email' placeholder='Email')
+              input.form-input(type='text' name='email' )
+
             input.form-submit(type='submit' value='HOÀN THÀNH' formaction='')

@@ -121,7 +121,7 @@ exports.get_customers = async (req, res) => {   //======================= oke ==
 // lấy ra danh sách sản phẩm trong kho hàng
 exports.get_wavehouse = async(req , res)=>{
     let arrParams = [];
-    const sql = 'SELECT * FROM `product` WHERE product_type = 1 and status = 1'
+    const sql = 'SELECT * FROM `product` WHERE status = 1'
     try {
         db.connectDB()
             .then((conection) => {
@@ -195,9 +195,7 @@ exports.get_menu = async (req, res) => {
                 conection.query(sql, arrParams, function (err, result, fields) {
                     if (err) throw err;
                     else {
-                        db.closeDB(conection);
-
-                       
+                        db.closeDB(conection);   
                         result.map((item) => {
                             if(item.product_type == 1)
                             {
@@ -214,8 +212,7 @@ exports.get_menu = async (req, res) => {
                             {
                                 item.status = "ngưng bán"
                             }
-                        })
-                       
+                        })     
                         let products = result;
                         return res.render('./menu.pug',{products: products});
                     }
@@ -228,17 +225,36 @@ exports.get_menu = async (req, res) => {
     }
 }
 
+exports.post_reset = async (req , res) =>{
+    const sql = 'update product set quantity_available = 0 where product_type = 0';
+    try {
+        db.connectDB()
+            .then((conection) => {
+                conection.query(sql, function (err, result, fields) {
+                    if (err) throw err;
+                    else {
+                        db.closeDB(conection);
+                        return res.redirect('/thuc_don');
+                    }
+                })
+            })
+    }
+    catch (error) {
+        console.log("error")
+        res.status(200).json(error);
+    }
+
+}
 
 exports.get_add_food = async ( req , res) =>{
     return res.render('./menu-insert.pug');
 }
-
 //thêm mới món ăn
 exports.post_add_food = async (req, res) => { //================= oke =======================
-    const { name, price, type, description , image_link } = req.body;
+    const { name, price, type, description , image_link , quantity_available } = req.body;
   
-    console.log({ name, price, type, description , image_link });
-    let arrParams = ['NULL', name, type, description , image_link , 1, price, 0];
+    console.log({ name, price, type, description , image_link , quantity_available });
+    let arrParams = ['NULL', name, type, description , image_link , 1, price, quantity_available];
     const sql = 'INSERT INTO `product` (`product_id`, `product_name`, `product_type`, `description`, `image_link`, `status`, `price`, `quantity_available`) VALUES (?,?,?,?,?,?,?,?)';
     try {
         db.connectDB()
@@ -318,12 +334,9 @@ exports.post_add_money = async (req , res ) =>{
 }
 
 exports.get_statistical = async(req,res)=>{
-    return res.render('./statistical.pug')
-}
-
-exports.post_statistical_day = async(req,res)=>{
-    console.log(req.body.date);
-    let arrParams =[req.body.date];
+    let today = new Date();
+    let arrParams =[today];
+    console.log(today);
 
     const sql = 'select b.product_id , p.product_name , p.price ,count(*) as SoLuong , SUM(p.price) as'
             +' TongTien , (DATE(bill.date_created)) as Ngay from bill_order_detail as b , product as p , bill_order as bill'
@@ -347,7 +360,7 @@ exports.post_statistical_day = async(req,res)=>{
 
                                 console.log(total);
                                
-                                return res.render('./statistical_day.pug', {products:products , total : total});
+                                return res.render('./statistical.pug', {products:products , total : total});
                             }
                         })
                     })
@@ -358,9 +371,49 @@ exports.post_statistical_day = async(req,res)=>{
                 s
             }
 }
+
+
+exports.post_statistical_day = async(req,res)=>{
+    var date = req.body.date;
+    let arrParams =[req.body.date];
+
+    const sql = 'select b.product_id , p.product_name , p.price ,count(*) as SoLuong , SUM(p.price) as'
+            +' TongTien , (DATE(bill.date_created)) as Ngay from bill_order_detail as b , product as p , bill_order as bill'
+            +' where b.product_id = p.product_id and DATE(bill.date_created) = ?'
+            +' GROUP BY b.product_id , p.product_name'
+            try {
+                db.connectDB()
+                    .then((conection) => {
+                        conection.query(sql, arrParams, function (err, result, fields) {
+                            if (err) throw err;
+                            else {
+                                db.closeDB(conection);
+                                console.log(result);
+                                let total = 0;
+                                result.map((item)=>{
+                                    total+=item.TongTien;
+                                    item.Ngay = req.body.date;
+                                })
+                               
+                                let products = result;
+
+                                console.log(total);
+                                console.log(date);
+                                return res.render('./statistical_day.pug', {products:products , total : total , date : date});
+                            }
+                        })
+                    })
+
+            }
+            catch (error) {
+                console.log("error")
+                res.status(200).json(error);
+                s
+            }
+}
 exports.get_statistical_month = async(req,res)=>{
     let today = new Date();
-
+    console.log(today.getFullYear());
     const sql = 'CALL `thongKe`(?)'
             try {
                 db.connectDB()
@@ -382,7 +435,7 @@ exports.get_statistical_month = async(req,res)=>{
                                 return res.render('./statistical_month.pug',
                                 {
                                     array_EachMonth : array_EachMonth,
-                                    year: today.getFullYear()
+                                    year: parseInt(today.getFullYear())
                                 });
                               
                             }
@@ -393,4 +446,6 @@ exports.get_statistical_month = async(req,res)=>{
                 console.log("error")
                 res.status(200).json(error);
             }
+
+            
 }

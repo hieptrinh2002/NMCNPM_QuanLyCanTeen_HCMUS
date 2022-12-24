@@ -38,9 +38,10 @@ table tbody td {
     font-size: 20px;
     padding: 10px 20px;
     font-family:  'Times New Roman', Times, serif;
-    margin-left: 330px;
+    margin-left: 550px;
     border-radius: 10px;
-    background-color: #FBDDBB;
+    background-color: #E8898E;
+    margin-bottom: 50px;
 }
 
 .total-money {
@@ -49,5 +50,6 @@ table tbody td {
     font-family:  'Times New Roman', Times, serif;
     margin-left: 20px;
     border-radius: 10px;
-    background-color: #FBDDBB;
+    background-color: #E8898E;
+    margin-bottom: 50px;
 }

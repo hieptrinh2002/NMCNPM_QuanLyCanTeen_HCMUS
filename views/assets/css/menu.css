@@ -32,7 +32,7 @@ table tbody td {
 }
 
 .menu-insert__btn {
-    padding: 20px 200px;
+    padding: 20px 280px;
 }
 .insert__btn {
     height: 54px;
@@ -45,4 +45,23 @@ table tbody td {
 
 .insert__btn:hover {
     border: 2px solid #e67e22;
+}
+
+.reset__btn {
+    height: 54px;
+    width: 254px;
+    font-size: 2rem;
+    background-color: #013937;
+    color: #FBDDBB;
+    padding: 5px 50px;
+}
+
+.reset__btn:hover {
+    border: 2px solid #e67e22;
+}
+
+
+
+.reset {
+    padding: 5px 280px;
 }

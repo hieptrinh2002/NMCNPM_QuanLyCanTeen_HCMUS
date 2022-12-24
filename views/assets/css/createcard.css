@@ -10,10 +10,7 @@
 input {
     width: 600px;
     height: 40px;
-    border-radius: 15px;
-    border: 2px solid #F3C294;
-    color: #000;
-    background-color: #FFF8EF;
+    border: 1px solid #e8898eca;
 }
 
 
@@ -37,8 +34,8 @@ input {
 
 
 .form-group{
-    margin-top: 15px;
-    margin-bottom: 20px;
+    margin-top: 5px;
+    margin-bottom: 15px;
     width: 100%;
 }
 

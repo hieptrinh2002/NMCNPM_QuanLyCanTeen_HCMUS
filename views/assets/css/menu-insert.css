@@ -13,6 +13,13 @@ input {
 }
 
 
+select {
+    width: 600px;
+    height: 30px;
+}
+
+
+
 
 
 .menu-insert {
@@ -34,12 +41,13 @@ input {
 
 
 .form-group{
-    margin-top: 15px;
-    margin-bottom: 20px;
+    margin-top: 5px;
+    margin-bottom: 15px;
     width: 100%;
 }
 
 .form-input {
+    border: 1px solid #fb9086;
     width: 100%;
 }
 

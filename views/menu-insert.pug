@@ -105,16 +105,30 @@ html(lang='vi')
             .menu-insert
               form#form-insert(action='/thuc_don/them_mon_an' method='POST')
                 h2.add-newfood THÊM MÓN ĂN
+                label Tên món ăn: 
                 .form-group
-                  input.form-input(type='text' name='name' placeholder='Tên món ăn')
+                  input.form-input(type='text' name='name' )
+                
+                label Đơn giá: 
                 .form-group
-                  input.form-input(type='text' name='price' placeholder='Đơn giá')
+                  input.form-input(type='text' name='price' )
+                
+                label Loại: 
                 .form-group
-                  input.form-input(type='text' name='type' placeholder='Loại')
+                  select.form-input(name='type')
+                    option(value='1') Thức ăn trong ngày
+                    option(value='2') Thực phẩm tiêu dùng
+                
+                label Mô tả: 
                 .form-group
-                  input.form-input(type='text' name='description' placeholder='Mô tả')
+                  input.form-input(type='text' name='description' )
+                
+                label Thêm link ảnh: 
                 .form-group
-                  input.form-input(type='text' name='image_link' placeholder='Thêm link ảnh')
-
-                //thêm link trang khi bấm hoàn thành nó nhảy nhe
+                  input.form-input(type='text' name='image_link' )
+                
+                label Số lượng: 
+                .form-group
+                  input.form-input(type='number' name='quantity_available' )
+                  
                 input.form-submit(type='submit' value='HOÀN THÀNH')
