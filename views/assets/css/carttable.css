@@ -25,25 +25,49 @@ table tbody td {
     font-family:  'Times New Roman', Times, serif;
 }
 
-.warehouse-list {
+.carts-list {
     font-size: 20px;
     padding: 10px 30px;
     font-family:  'Times New Roman', Times, serif;
     width: 100%;
-    margin-left: 250px;
+    margin-left: 450px;
 }
 
-.warehouse-update__btn {
+.carts-update__btn {
     padding: 20px 150px;
 } 
 
-.warehouse__btn {
+.carts__btn {
     font-size: 2rem;
     background-color: #013937;
     color: #FBDDBB;
     padding: 10px 100px;
 }
 
-.warehouse__btn:hover {
+.carts__btn:hover {
     border: 2px solid #e67e22;
+}
+
+body {
+	margin-top: 20px;
+}
+.ui-w-41 {
+    width: 40px !important;
+    height: auto;
+}
+
+.card1{
+    box-shadow: 0 1px 15px 1px rgba(52,40,104,.08);    
+}
+
+.ui-product-color1 {
+    display: inline-block;
+    overflow: hidden;
+    margin: .144em;
+    width: .875rem;
+    height: .875rem;
+    border-radius: 10rem;
+    -webkit-box-shadow: 0 0 0 1px rgba(0,0,0,0.15) inset;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.15) inset;
+    vertical-align: middle;
 }

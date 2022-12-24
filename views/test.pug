@@ -1,0 +1,75 @@
+html
+    head
+        meta(charset='UTF-8')
+        meta(name='viewport' content='width=device-width, initial-scale=1.0')
+        title WAREHOUSE
+        //link(rel='stylesheet' href='./assets/css/base.css')
+        //link(rel='stylesheet' href='./assets/css/main.css')
+        //link(rel='stylesheet' href='./assets/css/grid.css')
+        //link(rel='stylesheet' href='./assets/css/carttable.css')
+        //link(rel='stylesheet' href='./assets/font/themify-icons/themify-icons.css')
+        //link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css')
+        //link(href='https://fonts.googleapis.com/css?family=Roboto&display=swap' rel='stylesheet')
+        //link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css')
+        link#bootstrap-css(href='//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css' rel='stylesheet')
+        script(src='//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js')
+        script(src='//code.jquery.com/jquery-1.11.1.min.js')
+    body
+        .row
+            .col-xs-8
+                .panel.panel-info
+                        .panel-body
+                            .row
+                                .col-xs-2
+                                    img.img-responsive(src='https://media.macphun.com/img/uploads/customer/how-to/579/15531840725c93b5489d84e9.43781620.jpg?q=85&w=670')
+                                .col-xs-4
+                                    h4.product-name
+                                        strong Product name
+                                    h4
+                                        small Product description
+                                .col-xs-6
+                                    .col-xs-6.text-right
+                                    h6
+                                        strong 
+                                            | 25.00 
+                                            span.text-muted x
+                                .col-xs-4
+                                    input.form-control.input-sm(type='text' value='1')
+                                .col-xs-2
+                                    button.btn.btn-link.btn-xs(type='button')
+                                        span.glyphicon.glyphicon-trash  
+                            hr
+                            .row
+                                .col-xs-2
+                                    img.img-responsive(src='https://media.macphun.com/img/uploads/customer/how-to/579/15531840725c93b5489d84e9.43781620.jpg?q=85&w=670')
+                                .col-xs-4
+                                    h4.product-name
+                                        strong Product name
+                                    h4
+                                        small Product description
+                                .col-xs-6
+                                    .col-xs-6.text-right
+                                    h6
+                                        strong 
+                                            | 25.00 
+                                            span.text-muted x
+                                .col-xs-4
+                                    input.form-control.input-sm(type='text' value='1')
+                                .col-xs-2
+                                    button.btn.btn-link.btn-xs(type='button')
+                                        span.glyphicon.glyphicon-trash  
+                            hr
+                            .row
+                                .text-center
+                                    .col-xs-9
+                                        h6.text-right Added items?
+                                    .col-xs-3
+                                        button.btn.btn-default.btn-sm.btn-block(type='button') Update cart
+                            .panel-footer
+                                .row.text-center
+                                    .col-xs-9
+                                        h4.text-right 
+                                            | Total 
+                                            strong $50.00
+                                    .col-xs-3
+                                        button.btn.btn-success.btn-block(type='button') Checkout

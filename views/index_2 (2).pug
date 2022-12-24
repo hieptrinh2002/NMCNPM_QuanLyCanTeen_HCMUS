@@ -48,12 +48,13 @@ html(lang='vi')
         .grid.wide
           .row.sm-gutter.app__content
             // Category
-            .col.l-2.m-0.c-0(style='margin-top: 50px;')
+            //.col.l-2.m-0.c-0(style='margin-top: 50px;')
+            .toolbar
               nav.category
                 ul.category-list
                   li.category-item.category-item--active
                     button.category-item__link
-                      a(style='text-decoration: none;' href='./index.html')
+                      a(style='text-decoration: none;' href='./index')
                         | Trang
                         | chủ
                   li.category-item
@@ -78,126 +79,27 @@ html(lang='vi')
             .right
               .type-food
                 button#food.type-food-eat.active(style='visibility: hidden;') Đồ ăn
-                button#cart
-                  i.fa.fa-shopping-basket(aria-hidden='true')
-                  |                                 Giỏ Hàng
+                a(href = '/cart')
+                  button#cart
+                    i.fa.fa-shopping-basket(aria-hidden='true') Giỏ hàng
                 button#drink.type-food-drink(style='visibility: hidden;')
-                  a(href='./drink.html' style='text-decoration: none; color: #39B1E4;') Nước, bánh
+                  a(href='./drink' style='text-decoration: none; color: #39B1E4;') Nước, bánh
+      
               .list
                 each food in foodStore 
-                     .food
-                       .image
-                         img.img-prd(src=food.image_link alt='mi')
-                       .name.content-product-h3 #{food.product_name}
-                       .id #{food.product_id}
-                       span.price
-                         | #{food.price}
-                         .coin VND
-                       button.add.btn-cart(type='button') Thêm
-        #myModal.modal
-          .modal-content
-            .modal-header
-              h5.modal-title Giỏ Hàng
-              span.close ×
-            .modal-body
-              .cart-row
-                span.cart-item.cart-header.cart-column Sản Phẩm
-                span.cart-price.cart-header.cart-column Giá
-                span.cart-quantity.cart-header.cart-column Số Lượng
-              form(action='./index.html' method='POST')
-                .cart-items
-                  //
-                    <div class="cart-row">
-                    <div class="cart-item cart-column">
-                    <img class="cart-item-image"
-                    src="https://bizweb.dktcdn.net/thumb/large/100/228/168/products/sp1-a45a32a1-38d4-4a8a-9c37-e936013858b2.jpg?v=1575877003000"
-                    width="100" height="100">
-                    <span class="cart-item-title">Máy Bơm Chìm Hộ Gia Đình QDX 1500W 220VAC 40L/1min
-                    H=8m</span>
-                    </div>
-                    <span class="cart-price cart-column">1599000đ</span>
-                    <div class="cart-quantity cart-column">
-                    <input class="cart-quantity-input" type="number" value="2">
-                    <button class="btn btn-danger" type="button">Xóa</button>
-                    </div>
-                    </div>
-              .cart-total
-                strong.cart-total-title Tổng Cộng:
-                span.cart-total-price 0VNĐ
-              .cart-payment
-                button
-                  a(href='./payment.html') Thanh toán
-    script(src='./assets/js/index.js')
-    script.
-      // xóa cart
-      const remove_cart = document.getElementsByClassName('btn-danger');
-      for (var i = 0; i < remove_cart.length; i++) {
-      var button = remove_cart[i]
-      button.addEventListener("click", function () {
-      var button_remove = event.target
-      button_remove.parentElement.parentElement.remove()
-      })
-      }
-      // Thêm vào giỏ
-      var add_cart = document.getElementsByClassName("btn-cart");
-      for (let i = 0; i < add_cart.length; i++) {
-      var add = add_cart[i];
-      add.addEventListener("click", function (event) {
-      var button = event.target;
-      var product = button.parentElement.parentElement;
-      var img = product.parentElement.getElementsByClassName("img-prd")[i].src
-      console.log(img)
-      var title = product.getElementsByClassName("content-product-h3")[i].innerText
-      var price = product.getElementsByClassName("price")[i].innerText
-      addItemToCart(title, price, img)
-      // Khi thêm sản phẩm vào giỏ hàng thì sẽ hiển thị modal
-      // modal.style.display = "block";
-      updatecart()
-      })
-      }
-      function addItemToCart(title, price, img) {
-      var cartRow = document.createElement('div')
-      cartRow.classList.add('cart-row')
-      var cartItems = document.getElementsByClassName('cart-items')[0]
-      var cart_title = cartItems.getElementsByClassName('cart-item-title')
-      // Nếu title của sản phẩm bằng với title mà bạn thêm vao giỏ hàng thì sẽ thông cho user.
-      for (var i = 0; i < cart_title.length; i++) {
-      if (cart_title[i].innerText == title) {
-      alert('Sản Phẩm Đã Có Trong Giỏ Hàng')
-      return
-      }
-      }
-      var cartRowContents = `
-      <div class="cart-item cart-column">
-      <img class="cart-item-image" src="${img}" width="100" height="100">
-      <span class="cart-item-title">${title}</span>
-      </div>
-      <span class="cart-price cart-column">${price}</span>
-      <div class="cart-quantity cart-column">
-      <input class="cart-quantity-input" type="number" value="1">
-      <button class="btn btn-danger" type="button">Xóa</button>
-      </div>`
-      cartRow.innerHTML = cartRowContents
-      cartItems.append(cartRow)
-      // cartItems.after(cartRow)
-      cartRow.getElementsByClassName('btn-danger')[0].addEventListener('click', function () {
-      var button_remove = event.target
-      button_remove.parentElement.parentElement.remove()
-      updatecart()
-      })
-      cartRow.getElementsByClassName('cart-quantity-input')[0].addEventListener('change', function (event) {
-      var input = event.target
-      if (isNaN(input.value) || input.value <= 0) {
-      input.value = 1;
-      }
-      updatecart()
-      })
-      var xhr = new XMLHttpRequest();
-      xhr.open("POST", yourUrl, true);
-      xhr.setRequestHeader('Content-Type', 'application/json');
-      xhr.send(JSON.stringify({
-      image: img ,
-      name: title,
-      money: price
-      }));
-      }
+                      .food
+                        form(action="/add/!{food.product_id}", method="post") 
+                          .image
+                            img.img-prd(src=food.image_link alt='mi')
+                          .name.content-product-h3 !{food.product_name}
+                          .id !{food.product_id}
+                          span.price
+                            | !{food.price}
+                            .coin VND
+                          form(action="/index", method="post") 
+                            input(id = 'quantity',type="number", name="quantity",value = "1")
+                            input(id = 'id',type = "hidden",name="id",value = food.product_id)
+                            button.add.btn-cart
+                              a(type = "submit") Thêm
+
+        

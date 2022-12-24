@@ -1,0 +1,53 @@
+.table {
+    width: 100%;
+}
+
+.table, th, td {
+    border-bottom: 1px solid #333;
+    border-right: 1px solid #333;
+    border-collapse: collapse;
+}
+
+td, th {
+    padding: 10px 10px;
+}
+
+table thead th {
+    text-align: center;
+    border-radius: 10px;
+    background-color: #FBDDBB;
+}
+
+table tbody td {
+    text-align: center;
+    /* border-radius: 10px;
+    background-color: #EFEFEF; */
+    font-family:  'Times New Roman', Times, serif;
+}
+
+.statistical-list {
+    font-size: 20px;
+    padding: 10px 30px;
+    font-family:  'Times New Roman', Times, serif;
+    width: 100%;
+    margin-left: 300px;
+    margin-bottom: 40px;
+}
+
+.total {
+    font-size: 20px;
+    padding: 10px 20px;
+    font-family:  'Times New Roman', Times, serif;
+    margin-left: 330px;
+    border-radius: 10px;
+    background-color: #FBDDBB;
+}
+
+.total-money {
+    font-size: 20px;
+    padding: 10px 20px;
+    font-family:  'Times New Roman', Times, serif;
+    margin-left: 20px;
+    border-radius: 10px;
+    background-color: #FBDDBB;
+}

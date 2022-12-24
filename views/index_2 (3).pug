@@ -1,0 +1,250 @@
+doctype html
+html(lang='vi')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Canteen US
+    link(rel='stylesheet' href='./assets/css/base.css')
+    link(rel='stylesheet' href='./assets/css/grid.css')
+    link(rel='stylesheet' href='./assets/css/main.css')
+    link(rel='stylesheet' href='./assets/css/style.css')
+    link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css')
+    link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto&display=swap')
+    link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css')
+  body
+    .app(style='min-height: 100vh;')
+      header.header
+        .grid.wide
+          nav.header__navbar.hide-on-mobile-tablet
+            ul.header__navbar-list(style='width:1200px')
+              // Header with Search
+              .header-with-search
+                label.header__mobile-search(for='mobile-search-checkbox')
+                  i.header__mobile-search-icon.fas.fa-search
+                // Header Logo
+                .header__logo.hide-on-tablet
+                  img.header__logo-img(src='./assets/img/logo.png' alt='')
+                  a.header__logo-link(href='/')
+                input#mobile-search-checkbox.header__search-checkbox(type='checkbox' hidden='')
+                // Header Search
+                .header__search
+                  .header__search-input-wrap
+                    input.header__search-input(type='text' placeholder='Nhập để tìm kiếm sản phẩm')
+                  button.header__search-btn
+                    i.header__search-btn-icon.fas.fa-search
+                // Header Logo
+                .header__location.hide-on-tablet
+                  img.header__location-img(src='./assets/img/location.png' alt='')
+                  a.header__location-link(href='/')
+                // User
+                .header__user
+                  img.header__navbar-user-img(src='./assets/img/user_avatar.png' alt='')
+                  ul.header__navbar-user-menu
+                    li.header__navbar-user-item
+                      a(href='') Tài khoản của tôi
+                    li.header__navbar-user-item.header__navbar-user-item--separate
+                      a(href='') Đăng xuất
+      .app__container(style='background-color: white;')
+        .grid.wide
+          .row.sm-gutter.app__content
+            // Category
+            .col.l-2.m-0.c-0(style='margin-top: 50px;')
+              nav.category
+                ul.category-list
+                  li.category-item.category-item--active
+                    button.category-item__link
+                      a(style='text-decoration: none;' href='./index.html')
+                        | Trang
+                        | chủ
+                  li.category-item
+                    button.category-item__link
+                      | Thực đơn
+                    // <a href="#" class="category-item__link">Thực đơn</a>
+                  li.category-item
+                    button.category-item__link Kho hàng
+                    // <a href="#" class="category-item__link">Kho hàng</a>
+                  li.category-item
+                    button.category-item__link Khách hàng
+                    // <a href="#" class="category-item__link">Khách hàng</a>
+                  li.category-item
+                    button.category-item__link Thống kê
+                    // <a href="#" class="category-item__link">Thống kê</a>
+                  li.category-item
+                    button.category-item__link Nhân viên
+                    // <a href="#" class="category-item__link">Nhân viên</a>
+                  li.category-item
+                    button.category-item__link Tạo thẻ khách hàng
+                    // <a href="#" class="category-item__link">Tạo thẻ khách hàng</a>
+            .right
+              .type-food
+                button#food.type-food-eat.active(style='visibility: hidden;') Đồ ăn
+                button#cart
+                  i.fa.fa-shopping-basket(aria-hidden='true')
+                  |                                 Giỏ Hàng
+                button#drink.type-food-drink(style='visibility: hidden;')
+                  a(href='./drink.html' style='text-decoration: none; color: #39B1E4;') Nước, bánh
+              .list
+                 each food in foodStore 
+                     .food
+                       .image
+                         img.img-prd(src=food.image_link alt='mi')
+                       .name.content-product-h3 #{food.product_name}
+                       .id #{food.product_id}
+                       span.price
+                         | #{food.price}
+                         .coin VND
+                       button.add.btn-cart(type='button') Thêm
+        #myModal.modal
+          .modal-content
+            .modal-header
+              h5.modal-title Giỏ Hàng
+              span.close ×
+            .modal-body
+              .cart-row
+                span.cart-id.cart-header.cart-column ID
+                span.cart-item.cart-header.cart-column Sản Phẩm
+                span.cart-price.cart-header.cart-column Giá
+                span.cart-quantity.cart-header.cart-column Số Lượng
+              form(method = "post")
+                .cart-items
+                  //
+                    <div class="cart-row">
+                    <div class="cart-item cart-column">
+                    <img class="cart-item-image"
+                    src="https://bizweb.dktcdn.net/thumb/large/100/228/168/products/sp1-a45a32a1-38d4-4a8a-9c37-e936013858b2.jpg?v=1575877003000"
+                    width="100" height="100">
+                    <span class="cart-item-title">Máy Bơm Chìm Hộ Gia Đình QDX 1500W 220VAC 40L/1min
+                    H=8m</span>
+                    </div>
+                    <span class="cart-price cart-column">1599000đ</span>
+                    <div class="cart-quantity cart-column">
+                    <input class="cart-quantity-input" type="number" value="2">
+                    <button class="btn btn-danger" type="button">Xóa</button>
+                    </div>
+                    </div>
+              .cart-total
+                strong.cart-total-title Tổng Cộng:
+                span.cart-total-price 0VNĐ
+              .cart-payment
+                button(type="button",value = "Submit",onclick ="sendDB()") Thanh toán
+    script(src='./assets/js/index.js')
+    script.
+      // xóa cart
+      const remove_cart = document.getElementsByClassName('btn-danger');
+      for (var i = 0; i < remove_cart.length; i++) {
+      var button = remove_cart[i]
+      button.addEventListener("click", function () {
+      var button_remove = event.target
+      button_remove.parentElement.parentElement.remove()
+      })
+      }
+      // Thêm vào giỏ
+      var add_cart = document.getElementsByClassName("btn-cart");
+      for (let i = 0; i < add_cart.length; i++) {
+      var add = add_cart[i];
+      add.addEventListener("click", function (event) {
+      var button = event.target;
+      var product = button.parentElement.parentElement;
+      var img = product.parentElement.getElementsByClassName("img-prd")[i].src
+      // console.log(img)
+      var title = product.getElementsByClassName("content-product-h3")[i].innerText
+      var price = product.getElementsByClassName("price")[i].innerText
+      var product_id = product.getElementsByClassName("id")[i].innerText
+      addItemToCart(product_id,title, price, img)
+      // Khi thêm sản phẩm vào giỏ hàng thì sẽ hiển thị modal
+      // modal.style.display = "block";
+      updatecart()
+      })
+      }
+      function addItemToCart(product_id,title, price, img) {
+      var cartRow = document.createElement('div')
+      cartRow.classList.add('cart-row')
+      var cartItems = document.getElementsByClassName('cart-items')[0]
+      var cart_title = cartItems.getElementsByClassName('cart-item-title')
+      // Nếu title của sản phẩm bằng với title mà bạn thêm vao giỏ hàng thì sẽ thông cho user.
+      for (var i = 0; i < cart_title.length; i++) {
+      if (cart_title[i].innerText == title) {
+      alert('Sản Phẩm Đã Có Trong Giỏ Hàng')
+      return
+      }
+      }
+      var cartRowContents = `
+      <div class="cart-item cart-column">
+      <span class="cart-id">${product_id}</span>
+      <img class="cart-item-image" src="${img}" width="100" height="100">
+      <span class="cart-item-title">${title}</span>
+      </div>
+      <span class="cart-price cart-column">${price}</span>
+      <div class="cart-quantity cart-column">
+      <input class="cart-quantity-input" type="number" value="1">
+      <button class="btn btn-danger" type="button">Xóa</button>
+      </div>`
+      cartRow.innerHTML = cartRowContents
+      cartItems.append(cartRow)
+      cartRow.getElementsByClassName('btn-danger')[0].addEventListener('click', function () {
+      var button_remove = event.target
+      button_remove.parentElement.parentElement.remove()
+      updatecart()
+      })
+      cartRow.getElementsByClassName('cart-quantity-input')[0].addEventListener('change', function (event) {
+      var input = event.target
+      if (isNaN(input.value) || input.value <= 0) {
+      input.value = 1;
+      }
+      updatecart()
+      })
+      }
+      /*async function sendDB() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/index", true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.onload = function() {
+                  alert("Hi");
+        }
+        let dbout = await extractFormValues()
+        xhr.send({});
+      }*/
+       function extractFormValues() {
+          let list = [];
+          let img,title,price,quantity;
+          let list_item = document.getElementsByClassName("cart-row");
+          let len = 0;
+          console.log(list_item.length)
+          while (len <=list_item.length){
+            //img = document.getElementsByClassName("cart-item-image")[i].src
+            title = document.getElementsByClassName("cart-item-title")[len].innerText
+            console.log(title)
+            //price = document.getElementsByClassName("cart-price")[i + 1].innerText
+            quantity = document.getElementsByClassName("cart-quantity-input")[len].value
+            console.log(quantity)
+            let dat = {
+              name: title,
+              amount: quantity
+            }
+            console.log(dat)
+            list.push(dat)
+            len = len + 1;
+          }
+          console.log(list)
+          return (list)
+        }
+      function sendDB() {
+        let list_item = document.getElementsByClassName("cart-row");
+        for (let i = 0; i < list_item.length; i++) {
+        let img = document.getElementsByClassName("cart-item-image")[i].src
+        let title = document.getElementsByClassName("cart-item-title")[i].innerText
+        console.log(title)
+        let price = document.getElementsByClassName("cart-price")[i + 1].innerText
+        let quantity = document.getElementsByClassName("cart-quantity-input")[i].value
+        console.log(quantity)
+        const options = {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({name: title,amount:quantity})
+        };
+
+        fetch('/index', options).then((res) => res.json()).then(data => console.log(data));
+      }
+      }
+      
+    

@@ -1,6 +1,6 @@
 .right {
     width: 80%;
-    margin-left: 150px;
+    
     /* background-color: red; */
     display: flex;
     flex-direction: column;
@@ -26,7 +26,7 @@
     font-weight: bold;
 }
 
-/* .type-food-drink {
+.type-food-drink {
     border-radius: 5px;
     border: none;
     width: 150px;
@@ -39,14 +39,14 @@
 }
 
 .type-food-eat:hover,
-/* .type-food-drink:hover {
+.type-food-drink:hover {
     background-color: #c1d2da !important;
     cursor: pointer;
-} */ 
+}
 
-/* .active {
+.active {
     background-color: #EFEFEF;
-} */
+}
 
 
 .list {
@@ -57,11 +57,12 @@
     align-items: center;
     justify-content: center;
     margin-top: 20px;
+    margin-left: 210px;
 }
 
 .food {
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
     /* background-color: red; */
     border-radius: 5px;
     border: 1px solid red;
@@ -80,13 +81,10 @@
 
 .food .name {
     position: absolute;
-    left: 5px;
-    width: 75%;
-    height: 100%;
+    left: 35%;
     top: 100px;
     font-size: 15px;
     font-weight: bold;
-    text-align: center;
 }
 
 .food .id {
@@ -103,7 +101,7 @@
 .food .price {
     position: absolute;
     left: 10%;
-    top: 160px;
+    top: 150px;
     max-width: 100px;
     font-size: 15px;
     font-weight: bold;
@@ -117,7 +115,7 @@
 .food .add {
     position: absolute;
     left: 70%;
-    top: 155px;
+    top: 145px;
     max-width: 100px;
     padding: 5px;
     font-size: 15px;
@@ -137,15 +135,11 @@
 /* svg */
 
 #cart {
-  font-size: 15px;
-  color: #fff;
-  background: #c7b200;
-  border: 1px solid transparent;
-  border-radius: 10px;
-  outline: none;
-  margin-left: 1rem;
-  padding: 12px;
-  cursor: pointer;
+    text-align: right;
+    position: absolute;
+    bottom: 20px;
+    right: 50px;
+    cursor: pointer;
 }
 
 #cart :hover {
@@ -348,7 +342,7 @@
   
   .cart-quantity-input {
     height: 34px;
-    width: 25px;
+    width: 50px;
     border-radius: 5px;
     border: 1px solid #56CCF2;
     background-color: #eee;
@@ -375,14 +369,14 @@
   
   .cart-total-title {
     font-weight: bold;
-    font-size: 2em;
+    font-size: 1.5em;
     color: black;
     margin-right: 20px;
   }
   
   .cart-total-price {
     color: #333;
-    font-size: 1.5em;
+    font-size: 1.1em;
   }
 
   .cart-payment {

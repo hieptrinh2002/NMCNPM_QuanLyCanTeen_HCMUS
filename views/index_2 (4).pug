@@ -84,7 +84,7 @@ html(lang='vi')
                 button#drink.type-food-drink(style='visibility: hidden;')
                   a(href='./drink.html' style='text-decoration: none; color: #39B1E4;') Nước, bánh
               .list
-                each food in foodStore 
+                 each food in foodStore 
                      .food
                        .image
                          img.img-prd(src=food.image_link alt='mi')
@@ -93,10 +93,7 @@ html(lang='vi')
                        span.price
                          | #{food.price}
                          .coin VND
-                       .cart-quantity-input
-                         input(type="number", value= "1")
                        button.add.btn-cart(type='button') Thêm
-                       
         #myModal.modal
           .modal-content
             .modal-header
@@ -104,7 +101,6 @@ html(lang='vi')
               span.close ×
             .modal-body
               .cart-row
-                span.cart-id.cart-header.cart-column ID
                 span.cart-item.cart-header.cart-column Sản Phẩm
                 span.cart-price.cart-header.cart-column Giá
                 span.cart-quantity.cart-header.cart-column Số Lượng
@@ -129,95 +125,107 @@ html(lang='vi')
                 strong.cart-total-title Tổng Cộng:
                 span.cart-total-price 0VNĐ
               .cart-payment
-                button
-                  a(href='./payment.html') Thanh toán
+                button(onclick='sendDB()')
+                  a(href='') Thanh toán
     script(src='./assets/js/index.js')
     script.
       // xóa cart
       const remove_cart = document.getElementsByClassName('btn-danger');
       for (var i = 0; i < remove_cart.length; i++) {
-        var button = remove_cart[i]
-        button.addEventListener("click", function () {
-          var button_remove = event.target
-          button_remove.parentElement.parentElement.remove()
-        })
+      var button = remove_cart[i]
+      button.addEventListener("click", function () {
+      var button_remove = event.target
+      button_remove.parentElement.parentElement.remove()
+      })
       }
       // Thêm vào giỏ
       var add_cart = document.getElementsByClassName("btn-cart");
       for (let i = 0; i < add_cart.length; i++) {
-        var add = add_cart[i];
-        add.addEventListener("click", function (event) {
-        var button = event.target;
-        var product = button.parentElement.parentElement;
-        var img = product.parentElement.getElementsByClassName("img-prd")[i].src
-        console.log(img)
-        var title = product.getElementsByClassName("content-product-h3")[i].innerText
-        var price = product.getElementsByClassName("price")[i].innerText
-        var product_id = product.getElementsByClassName("id")[i].innerText
-        var quantity = product.getElementsByClassName("cart-quantity-input")[i].innerText
-        addItemToCart(quantity,product_id,title, price, img)
-        // Khi thêm sản phẩm vào giỏ hàng thì sẽ hiển thị modal
-        // modal.style.display = "block";
-        updatecart()
-        })
-      }
-      function addItemToCart(quantity,product_id,title, price, img) {
-        var cartRow = document.createElement('div')
-        cartRow.classList.add('cart-row')
-        var cartItems = document.getElementsByClassName('cart-items')[0]
-        var cart_title = cartItems.getElementsByClassName('cart-item-title')
-        // Nếu title của sản phẩm bằng với title mà bạn thêm vao giỏ hàng thì sẽ thông cho user.
-        for (var i = 0; i < cart_title.length; i++) {
-          if (cart_title[i].innerText == title) {
-            alert('Sản Phẩm Đã Có Trong Giỏ Hàng')
-            return
-          }
-        }
-        var cartRowContents = `
-        <div class="cart-item cart-column">
-        <span class = "cart-id cart-column">${product_id}</span>
-        <img class="cart-item-image" src="${img}" width="100" height="100">
-        <span class="cart-item-title">${title}</span>
-        </div>
-        <span class="cart-price cart-column">${price}</span>
-        <div class="cart-quantity cart-column">
-        <input class="cart-quantity-input" type="number" value="1",name = "quantity">
-        <button class="btn btn-danger" type="button">Xóa</button>
-        </div>`
-        cartRow.innerHTML = cartRowContents
-        cartItems.append(cartRow)
-        // cartItems.after(cartRow)
-        cartRow.getElementsByClassName('btn-danger')[0].addEventListener('click', function () {
-          var button_remove = event.target
-          button_remove.parentElement.parentElement.remove()
-          updatecart()
-        })
-        cartRow.getElementsByClassName('cart-quantity-input')[0].addEventListener('change', function (event) {
-          var input = event.target
-          if (isNaN(input.value) || input.value <= 0) {
-            input.value = 1;
-          }
-          updatecart()
+      var add = add_cart[i];
+      add.addEventListener("click", function (event) {
+      var button = event.target;
+      var product = button.parentElement.parentElement;
+      var img = product.parentElement.getElementsByClassName("img-prd")[i].src
+      // console.log(img)
+      var title = product.getElementsByClassName("content-product-h3")[i].innerText
+      var price = product.getElementsByClassName("price")[i].innerText
+      addItemToCart(title, price, img)
+      // Khi thêm sản phẩm vào giỏ hàng thì sẽ hiển thị modal
+      // modal.style.display = "block";
+      updatecart()
       })
-        /*var cart_item = document.getElementsByClassName("cart-items")[0];
-        var cart_rows = cart_item.getElementsByClassName("cart-row");
-        var total = 0;
-        for (var i = 0; i < cart_rows.length; i++) {
-          var cart_row = cart_rows[i]
-          var price_item = cart_row.getElementsByClassName("cart-price ")[0]
-          var quantity_item = cart_row.getElementsByClassName("cart-quantity-input")[0]
-          var price = parseFloat(price_item.innerText)// chuyển một chuổi string sang number để tính tổng tiền.
-          var quantity = quantity_item.value // lấy giá trị trong thẻ input
-          total = total + (price * quantity)
-        }*/
-        var test = cartRow.getElementsByClassName('cart-quantity-input')[0]
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", '/index', true);
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.send(JSON.stringify({
-        id: product_id,
-        name: title,
-        money: price,
-        quantity: 
-        }));
-        }
+      }
+      function addItemToCart(title, price, img) {
+      var cartRow = document.createElement('div')
+      cartRow.classList.add('cart-row')
+      var cartItems = document.getElementsByClassName('cart-items')[0]
+      var cart_title = cartItems.getElementsByClassName('cart-item-title')
+      // Nếu title của sản phẩm bằng với title mà bạn thêm vao giỏ hàng thì sẽ thông cho user.
+      for (var i = 0; i < cart_title.length; i++) {
+      if (cart_title[i].innerText == title) {
+      alert('Sản Phẩm Đã Có Trong Giỏ Hàng')
+      return
+      }
+      }
+      var cartRowContents = `
+      <div class="cart-item cart-column">
+      <img class="cart-item-image" src="${img}" width="100" height="100">
+      <span class="cart-item-title">${title}</span>
+      </div>
+      <span class="cart-price cart-column">${price}</span>
+      <div class="cart-quantity cart-column">
+      <input class="cart-quantity-input" type="number" value="1">
+      <button class="btn btn-danger" type="button">Xóa</button>
+      </div>`
+      cartRow.innerHTML = cartRowContents
+      cartItems.append(cartRow)
+      // cartItems.after(cartRow)
+      cartRow.getElementsByClassName('btn-danger')[0].addEventListener('click', function () {
+      var button_remove = event.target
+      button_remove.parentElement.parentElement.remove()
+      updatecart()
+      })
+      cartRow.getElementsByClassName('cart-quantity-input')[0].addEventListener('change', function (event) {
+      var input = event.target
+      if (isNaN(input.value) || input.value <= 0) {
+      input.value = 1;
+      }
+      updatecart()
+      })
+      }
+    script.
+      // let list_item = document.getElementsByClassName("cart-row");
+      // for (let i = 0; i < list_item.length; i++) {
+      //         let img = document.getElementsByClassName("cart-item-image")[i].src
+      //         console.log(img)
+      //         let title = document.getElementsByClassName("cart-item-title")[i].innerText
+      //         console.log(title)
+      //         let price = document.getElementsByClassName("cart-price")[i].innerText
+      //         console.log(price)
+      //         document.getElementsByClassName("cart-item-image")[i].src
+      //     }
+      
+      function sendDB() {
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "/index", true);
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      var x = extractFormValues();
+      xhr.send(JSON.stringify({
+      amount: x
+      }));
+      }
+      function extractFormValues() {
+          let list = [];
+          let img,title,price,quantity;
+          let list_item = document.getElementsByClassName("cart-row");
+          for (let i = 0; i < list_item.length; i++) {
+            img = document.getElementsByClassName("cart-item-image")[i].src
+            title = document.getElementsByClassName("cart-item-title")[i].innerText
+            console.log(title)
+            price = document.getElementsByClassName("cart-price")[i + 1].innerText
+            quantity = document.getElementsByClassName("cart-quantity-input")[i].value
+            console.log(quantity)
+          }
+          return price
+      }
+

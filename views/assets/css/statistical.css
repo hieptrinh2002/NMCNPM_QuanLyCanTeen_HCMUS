@@ -1,0 +1,67 @@
+.statistical{
+    margin-left: 300px;
+    font-size: 18px;
+    padding: 10px 20px;
+    font-family:  'Times New Roman', Times, serif;
+    width: 100%;
+
+}
+
+
+
+input {
+    border-radius: 15px;
+    border: 2px solid #F3C294;
+    color: #000;
+    background-color: #FFF8EF;
+  
+}
+
+
+#form-insert {
+    max-width: 1000px;
+    background: rgb(255, 255, 255);
+    flex-grow: 1;
+    padding: 10px 10px 20px 20px;
+    border-radius: 30px;
+    
+}
+
+
+.form-group{
+    width: 200px;
+    display: inline-block;
+    padding-left: 15px;
+    padding-right: 10px;
+}
+
+.form-input {
+    width: 100%;
+}
+
+.form-submit {
+    border: 2px solid #000;
+    background-color: #F3C294;
+    font-family:  'Times New Roman', Times, serif;
+    color: #000;
+    display: inline-block;
+
+}
+
+.form-submit:hover {
+    border: 2px solid #e67e22;
+}
+
+.statistical-month {
+    border: 2px solid #000;
+    background-color: #F3C294;
+    font-family:  'Times New Roman', Times, serif;
+    border-radius: 20px;
+    color: #000;
+    margin-left: 120px;
+    display: inline-block;
+}
+
+.statistical-month:hover {
+    border: 2px solid #e67e22;
+}

@@ -5,6 +5,7 @@ const port = process.env.PORT || 5001;
 const userRoutes = require('./controllers/user');
 const { use } = require('./routes/user.route');
 const HomeRoutes = require('./controllers/HomeController');
+const CartRoutes = require("./controllers/cartController")
 
 
 
@@ -79,6 +80,8 @@ app.post('/addcart',(req,res)=>{
     console.log('Xuat ra roi ne');
     console.log(mimi);
 })
+
+app.post('/add/:id',HomeRoutes.addFood)
 let USER;
 app.get("/payment",(req,res)=>{
     USER = res.locals.user;
@@ -89,9 +92,10 @@ app.get("/payment",(req,res)=>{
 app.get('/shop',(req,res)=>{
     res.render("../views/shop.pug")
 })
-app.get('//shopping-cart',(req,res)=>{
+app.get('/shopping-cart',(req,res)=>{
     res.render("../views/shopping-cart.pug")
 })
+app.get('/cart',CartRoutes.viewCart)
 //app.use('/auth',userRoutes.LoginController)
 //
 

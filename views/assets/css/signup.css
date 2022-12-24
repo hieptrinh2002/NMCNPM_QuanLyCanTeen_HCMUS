@@ -9,7 +9,8 @@
 
 
 body {
-    background: url('https://www.wowweekend.vn/document_root/upload/articles/image/BrowseContent/WCoffeeTalk/202111/L%C3%AA%20Rin%20v%C3%A0%20chuy%E1%BB%87n%20ngh%E1%BB%81%20Food%20Illustrator/2.jpg') center /cover;
+    /* center/ cover no-repeat */
+    background: url('https://img.vietcetera.com/uploads/images/12-jan-2021/npyl-le-rin-featured-image.jpg') top/cover no-repeat;
     /* background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%); */
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -90,27 +91,9 @@ header p {letter-spacing: 0.08em;}
 
 
 
-/* Show/hide password Font Icon */
-#eye {
-    background: #fff;
-    color: #333;
-  
-    margin: 5.9px 0 0 0;
-    margin-left: -20px;
-    padding: 15px 9px 19px 0px;
-    border-radius: 0px 5px 5px 0px;
-  
-    float: right;
-    position: relative;
-    right: 1%;
-    top: -.2%;
-    z-index: 5;
-    
-    cursor: pointer;
-}
 /* inputs form  */
 input[class="form-input"]{
-    width: 240px;
+    width: 280px;
     height: 50px;
   
     margin-top: 2%;
@@ -123,7 +106,7 @@ input[class="form-input"]{
     outline: none;
     border: none;
   
-    border-radius: 0px 5px 5px 0px;
+    border-radius: 10px;
     transition: 0.2s linear;
     
 }
@@ -143,7 +126,7 @@ button {
     display: inline-block;
 }
 
-.log-in{
+.sign-up{
     color: #FBDDBB;
     font-size: 20px;
   
@@ -173,32 +156,16 @@ button {
 }
 
 /*       Forgot Password button FAF3DD  */
-.frgt-pass {
+.login-now {
     float: left;
     text-align: center;
+    font-size: 20px;
     background: #B8F2E6;
-}
-
-/*     Sign Up button  */
-.sign-up {
-    float: right;
-    padding-left: 30px;
-    background: #B8F2E6;
-    
+    margin-left: 70px;
 }
 
 
-.orther {
-    width: 100%;
-    display: inline-block;
-}
-
-.sign-up a {
-    color: #000;
-    text-decoration: none;
-}
-
-.frgt-pass a {
+.login-now a {
     color: #000;
     text-decoration: none;
 }

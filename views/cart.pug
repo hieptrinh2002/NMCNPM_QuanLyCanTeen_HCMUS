@@ -1,0 +1,158 @@
+doctype html
+html(lang='vi')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title WAREHOUSE
+    link(rel='stylesheet' href='./assets/css/base.css')
+    link(rel='stylesheet' href='./assets/css/main.css')
+    link(rel='stylesheet' href='./assets/css/grid.css')
+    link(rel='stylesheet' href='./assets/css/carttable.css')
+    link(rel='stylesheet' href='./assets/font/themify-icons/themify-icons.css')
+    link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css')
+    link(href='https://fonts.googleapis.com/css?family=Roboto&display=swap' rel='stylesheet')
+    link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css')
+    link#bootstrap-css(href='//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css' rel='stylesheet')
+    script(src='//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js')
+    script(src='//code.jquery.com/jquery-1.11.1.min.js')
+  script 
+    - var isEmpty = !{isEmpty}
+    - console.log(isEmpty)
+    - var giohang = carts
+    - var Totals = 0;
+    - console.log(giohang)
+    - carts.map((a)=>{
+    -   Totals +=a.price
+    - })
+    - console.log(Totals)
+  body
+     .app(style='min-height: 100vh;')
+        header.header
+          .grid.wide
+            nav.header__navbar.hide-on-mobile-tablet
+              ul.header__navbar-list(style='width:1200px')
+                // Header with Search
+                .header-with-search
+                  label.header__mobile-search(for='mobile-search-checkbox')
+                    i.header__mobile-search-icon.fas.fa-search
+                  // Header Logo
+                  .header__logo.hide-on-tablet
+                    img.header__logo-img(src='./assets/img/logo.png' alt='')
+                    a.header__logo-link(href='/')
+                  input#mobile-search-checkbox.header__search-checkbox(type='checkbox' hidden='')
+                  // Header Search
+                  .header__search
+                    .header__search-input-wrap
+                      input.header__search-input(type='text' placeholder='Nhập để tìm kiếm sản phẩm')
+                    button.header__search-btn
+                      i.header__search-btn-icon.fas.fa-search
+                  // Header Logo
+                  .header__location.hide-on-tablet
+                    img.header__location-img(src='./assets/img/location.png' alt='')
+                    a.header__location-link(href='/')
+                  // User
+                  .header__user
+                    img.header__navbar-user-img(src='./assets/img/user_avatar.png' alt='')
+                    ul.header__navbar-user-menu
+                      li.header__navbar-user-item
+                        a(href='') Tài khoản của tôi
+                      li.header__navbar-user-item.header__navbar-user-item--separate
+                        a(href='') Đăng xuất
+        .app__container(style='background-color: white;')
+          .grid.wide
+            .row.sm-gutter.app__content
+              // Category
+              .toolbar
+                nav.category
+                  ul.category-list
+                    li.category-item
+                      button.category-item__link(type='button' onclick='dieu_huong()') Trang chủ
+                      script.
+                        function dieu_huong(){
+                        location.assign("trang_chu");
+                        }
+                      // <button class="category-item__link">Trang chủ</button>
+                    li.category-item
+                      button.category-item__link(type='button' onclick='dieu_huong1()') Thực đơn
+                      script.
+                        function dieu_huong1(){
+                        location.assign("thuc_don");
+                        }
+                      // <button class="category-item__link">Thực đơn</button>
+                    li.category-item
+                      button.category-item__link(type='button' onclick='dieu_huong2()') Kho hàng
+                      script.
+                        function dieu_huong2(){
+                        location.assign("kho_hang");
+                        }
+                      // <button class="category-item__link">Kho hàng</button>
+                    li.category-item
+                      button.category-item__link(type='button' onclick='dieu_huong3()') Khách hàng
+                      script.
+                        function dieu_huong3(){
+                        location.assign("khach_hang");
+                        }
+                      // <button class="category-item__link">Khách hàng</button>
+                    li.category-item
+                      button.category-item__link(type='button' onclick='dieu_huong4()') Thống kê
+                      script.
+                        function dieu_huong4(){
+                        location.assign("thong_ke");
+                        }
+                      // <button class="category-item__link">Thống kê</button>
+                    li.category-item
+                      button.category-item__link(type='button' onclick='dieu_huong5()') Nhân viên
+                      script.
+                        function dieu_huong5(){
+                        location.assign("nhan_vien");
+                        }
+                      // <button class="category-item__link">Nhân viên</button>
+                    li.category-item
+                      button.category-item__link(type='button' onclick='dieu_huong6()') Tạo thẻ khách hàng
+                      script.
+                        function dieu_huong6(){
+                        location.assign("tao_the");
+                        }
+          if isEmpty == 1
+              h1(style='margin: 10rem; text-align: center;') Your cart is empty
+          else
+            .row
+                .col-xs-8
+                    .panel.panel-info(style ="position:relative;left:350px;top:2px")
+                        .panel-body
+                                  each food in carts
+                                      .row
+                                          .col-xs-2
+                                            .image
+                                                img.img-prd(src=food.image alt='mi' style="width: 150px;height: 100px;")
+                                          .col-xs-4
+                                              h4.product-name(style ="position:relative;left:10px;top:25px")
+                                                  strong !{food.name}
+                                          .col-xs-6
+                                              .col-xs-6.text-right
+                                              h6(style ="position:relative;left:45px;top:40px")
+                                                  strong 
+                                                      | !{food.price} 
+                                                      span.text-muted x
+                                          .col-xs-4
+                                              input(type='text' value='1' style='width:5em;position:relative;left:590px;top:-55px')
+                                          .col-xs-2
+                                              button.btn.btn-link.btn-xs(type='button')(style ="position:relative;left:450px;top:-57px")
+                                                  span.glyphicon.glyphicon-trash  
+                                      hr
+                                  .row
+                                      .text-center
+                                          .col-xs-9
+                                              h6.text-right(style ="position:relative;left:600px;top:-3px") Added items?
+                                          .col-xs-3
+                                              button.btn.btn-success.btn-block(role = 'button',style = "position:relative;left:610px;top:-5px") Update cart
+                                  .panel-footer
+                                      .row.text-center
+                                          .col-xs-9
+                                              h4.text-right 
+                                                  | Total 
+                                                  strong #{Totals} VND
+                                          .col-xs-3
+                                              button.btn.btn-success.btn-block(type='button') Checkout
+      
+                
