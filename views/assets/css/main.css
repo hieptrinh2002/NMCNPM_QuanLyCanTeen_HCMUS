@@ -655,9 +655,9 @@
 .modal-header {
   background-color:#e8898eca;
   height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
+  /* align-items: center;
+  justify-content: center; */
   font-family:  'Times New Roman', Times, serif;
   font-size: 20px;
   color:black
@@ -722,4 +722,18 @@
 
 .update-btn a{
   text-decoration: none
+}
+
+
+.close a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  float: right;
+  padding: 7px 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  background-color: #d00f0f;
+
+  
 }

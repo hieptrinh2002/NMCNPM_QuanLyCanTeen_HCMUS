@@ -1,5 +1,5 @@
-const { response, query } = require('express');
-const { render } = require('pug');
+// const { response, query } = require('express');
+// const { render } = require('pug');
 const db = require('../../models/database');
 
 
@@ -320,7 +320,6 @@ exports.post_add_money = async (req , res ) =>{
 exports.get_statistical = async(req,res)=>{
     return res.render('./statistical.pug')
 }
-
 
 exports.post_statistical_day = async(req,res)=>{
     console.log(req.body.date);

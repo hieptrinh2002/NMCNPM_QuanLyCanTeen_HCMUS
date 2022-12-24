@@ -47,3 +47,10 @@ table tbody td {
 .warehouse__btn:hover {
     border: 2px solid #e67e22;
 }
+
+.text-header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 30px;
+}

@@ -101,37 +101,18 @@ html(lang='vi')
                       location.assign("tao_the");
                       }
                     // <button class="category-item__link">Tạo thẻ khách hàng</button>
-            //- .customer
-            //-   .customer-list
-            //-     table
-            //-       thead
-            //-         tr
-            //-           th Mã KH
-            //-           th Họ tên
-            //-           th Số điện thoại
-            //-           th Email
-            //-           th Mã thẻ
-            //-           th Số tiền còn lại
-            //-           th Nạp tiền
-            //-       tbody
-            //-       each customer in customers
-            //-         tr
-            //-           td= customer.customer_id
-            //-           td= customer.fullname
-            //-           td= customer.phone
-            //-           td= customer.email
-            //-           td= customer.id_card
-            //-           td= customer.money_available
-            //-           td
-            //-             .recharge-btn
-            //-               a.money(href='/khach_hang/nap_tien/'+customer.customer_id) Nạp tiền
+
 
       form#form-insert(action='' method='POST')
         .modal.js-modal
           .modal-container
+            .close
+              a(href='/khach_hang')  X 
             header.modal-header
-              i.ti-upload(style='margin-right: 16px;')
-              |               NẠP TIỀN VÀO THẺ
+              .text-header
+                i.ti-upload(style='margin-right: 16px;')
+                |             NẠP TIỀN VÀO THẺ
+
             .modal-body
               label.modal-label(for='input-money')
                 | Số tiền cần nạp:

@@ -27,11 +27,12 @@ html(lang='vi')
                   a.header__logo-link(href='/')
                 input#mobile-search-checkbox.header__search-checkbox(type='checkbox' hidden='')
                 // Header Search
-                .header__search
-                  .header__search-input-wrap
-                    input.header__search-input(type='text' placeholder='Nhập để tìm kiếm sản phẩm')
-                  button.header__search-btn
-                    i.header__search-btn-icon.fas.fa-search
+                form#form-search(action='' method='POST')
+                  .header__search(style='width: 700px;')
+                    .header__search-input-wrap
+                      input.header__search-input(type='text' placeholder='Nhập để tìm kiếm ')
+                    button.header__search-btn(type='submit')
+                      i.header__search-btn-icon.fas.fa-search
                 // Header Logo
                 .header__location.hide-on-tablet
                   img.header__location-img(src='./assets/img/location.png' alt='')
