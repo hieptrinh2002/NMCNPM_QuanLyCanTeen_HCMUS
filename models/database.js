@@ -26,6 +26,5 @@ module.exports.connectDB = () => {
 };
 
 module.exports.closeDB = (con) => {
-    console.log('close db')
     con.destroy();
 };

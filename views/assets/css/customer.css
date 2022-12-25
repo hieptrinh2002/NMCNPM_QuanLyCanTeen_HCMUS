@@ -1,0 +1,73 @@
+.table {
+    width: 100%;
+}
+
+.table, th, td {
+    border-bottom: 1px solid #333;
+    border-right: 1px solid #333;
+    border-collapse: collapse;
+}
+
+td, th {
+    padding: 15px 15px;
+}
+
+table thead th {
+    text-align: center;
+    border-radius: 10px;
+    background-color: #FBDDBB;
+}
+
+table tbody td {
+    text-align: center;
+    font-family:  'Times New Roman', Times, serif;
+}
+
+.customer-list {
+
+    font-size: 18px;
+    padding: 10px 30px;
+    font-family:  'Times New Roman', Times, serif;
+    width: 100%;
+    margin-left: 250px;
+}
+
+ .customer-recharge__btn {
+    padding: 20px 250px;
+} 
+
+.customer__btn {
+    font-size: 2rem;
+    background-color: #013937;
+    color: #FBDDBB;
+    padding: 10px 100px;
+}
+
+.customer__btn:hover {
+    border: 2px solid #e67e22;
+}
+
+.recharge-btn {
+    border-radius: 30px;
+    background-color: #E8898E;
+    font-family:  'Times New Roman', Times, serif;
+    color: #FBDDBB;
+    width: 100%;
+    font-size: 20px;
+    padding: 3px;
+  }
+
+  .recharge-btn a{
+    text-decoration: none;
+    color: #000;
+  }
+
+
+  .text-header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 30px;
+}
+
+

@@ -1,0 +1,141 @@
+doctype html
+html(lang='vi')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Canteen US
+    link(rel='stylesheet' href='./assets/css/base.css')
+    link(rel='stylesheet' href='./assets/css/grid.css')
+    link(rel='stylesheet' href='./assets/css/main.css')
+    link(rel='stylesheet' href='./assets/css/payment.css')
+    link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css')
+    link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto&display=swap')
+    link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css')
+  body
+    .app(style='min-height: 100vh;')
+      header.header
+        .grid.wide
+          nav.header__navbar.hide-on-mobile-tablet
+            ul.header__navbar-list(style='width:1200px')
+              // Header with Search
+              .header-with-search
+                label.header__mobile-search(for='mobile-search-checkbox')
+                  i.header__mobile-search-icon.fas.fa-search
+                // Header Logo
+                .header__logo.hide-on-tablet
+                  img.header__logo-img(src='./assets/img/logo.png' alt='')
+                  a.header__logo-link(href='/')
+                input#mobile-search-checkbox.header__search-checkbox(type='checkbox' hidden='')
+                // Header Search
+                .header__search
+                  .header__search-input-wrap
+                    input.header__search-input(type='text' placeholder='Nhập để tìm kiếm sản phẩm')
+                  button.header__search-btn
+                    i.header__search-btn-icon.fas.fa-search
+                // Header Logo
+                .header__location.hide-on-tablet
+                  img.header__location-img(src='./assets/img/location.png' alt='')
+                  a.header__location-link(href='/')
+                // User
+                .header__user
+                  img.header__navbar-user-img(src='./assets/img/user_avatar.png' alt='')
+                  ul.header__navbar-user-menu
+                    li.header__navbar-user-item
+                      a(href='') Tài khoản của tôi
+                    li.header__navbar-user-item.header__navbar-user-item--separate
+                      a(href='') Đăng xuất
+      .app__container(style='background-color: white;')
+        .grid.wide
+          .row.sm-gutter.app__content.container-center
+            // Category
+            .toolbar
+              nav.category
+                ul.category-list
+                  li.category-item.category-item--active
+                    button.category-item__link(type='button' onclick='dieu_huong()') Trang chủ
+                    script.
+                      function dieu_huong(){
+                      location.assign("trang_chu");
+                      }
+                    // <button class="category-item__link">Trang chủ</button>
+                  li.category-item
+                    button.category-item__link(type='button' onclick='dieu_huong1()') Thực đơn
+                    script.
+                      function dieu_huong1(){
+                      location.assign("thuc_don");
+                      }
+                    // <button class="category-item__link">Thực đơn</button>
+                  li.category-item
+                    button.category-item__link(type='button' onclick='dieu_huong2()') Kho hàng
+                    script.
+                      function dieu_huong2(){
+                      location.assign("kho_hang");
+                      }
+                    // <button class="category-item__link">Kho hàng</button>
+                  li.category-item
+                    button.category-item__link(type='button' onclick='dieu_huong3()') Khách hàng
+                    script.
+                      function dieu_huong3(){
+                      location.assign("khach_hang");
+                      }
+                    // <button class="category-item__link">Khách hàng</button>
+                  li.category-item
+                    button.category-item__link(type='button' onclick='dieu_huong4()') Thống kê
+                    script.
+                      function dieu_huong4(){
+                      location.assign("thong_ke");
+                      }
+                    // <button class="category-item__link">Thống kê</button>
+                  li.category-item
+                    button.category-item__link(type='button' onclick='dieu_huong5()') Nhân viên
+                    script.
+                      function dieu_huong5(){
+                      location.assign("nhan_vien");
+                      }
+                    // <button class="category-item__link">Nhân viên</button>
+                  li.category-item
+                    button.category-item__link(type='button' onclick='dieu_huong6()') Tạo thẻ khách hàng
+                    script.
+                      function dieu_huong6(){
+                      location.assign("tao_the");
+                      }
+            .top-text
+              // <p class="id">Mã đơn : 43289</p>
+              // <button class="thanh-toan"><img src="https://upload.wikimedia.org/wikipedia/vi/thumb/f/fe/MoMo_Logo.png/220px-MoMo_Logo.png" alt=""><a href="">Momo</a></button>
+              // <a href=""><img src="https://upload.wikimedia.org/wikipedia/vi/thumb/f/fe/MoMo_Logo.png/220px-MoMo_Logo.png" alt="">Facebook</a>
+              .payment_list
+                img(width='80px' height='80px' src='https://thegioiinan.com/hinhanh/sanpham/inan_111/tin_622/The_gioi_in_an_tin_imagebanner_20200116134929326.jpg' alt='')
+                button#cart.payment Thẻ thành viên
+              .payment_list
+                img(width='80px' height='80px' src='https://play-lh.googleusercontent.com/yHmIm7FYKe_dW2WHTwWizp2p_gt7_ctdpCUevX654E1dsj5c9McWO03k_S6PPLG_DNz7' alt='')
+                button#btn-zalopay.payment ZaloPay
+              .payment_list
+                img(width='80px' height='80px' src='https://upload.wikimedia.org/wikipedia/vi/thumb/f/fe/MoMo_Logo.png/220px-MoMo_Logo.png' alt='')
+                button#btn-momo.payment Momo
+              // <button class="thanh-toan"> <a href="">Thanh toán</a> </button>
+            #myModal.modal
+              .modal-content
+                .modal-header
+                  h5.modal-title Mời nhập mã thẻ thành viên
+                  span.close ×
+                .modal-body
+                  .cart-row
+                    input(style='height: 24px; width: 200px;' type='text')
+                  .cart-payment
+                    button#btn-payment Thanh toán 
+                    p#success(style='display: none;') Thanh toán thành công
+            #zalopay_qr.modal(style='display: none;')
+              .modal-content
+                .modal-header
+                  h5.modal-title Mã QR ZaloPay
+                  span.close ×
+                .modal-body
+                  img(width='300px' height='300px' src='https://www.qrcode-gen.com/images/qrcode-default.png' alt='')
+            #momo_qr.modal(style='display: none;')
+              .modal-content
+                .modal-header
+                  h5.modal-title Mã QR Momo
+                  span.close ×
+                .modal-body
+                  img(width='300px' height='300px' src='https://www.qrcode-gen.com/images/qrcode-default.png' alt='')
+    script(src='./assets/js/payment.js')

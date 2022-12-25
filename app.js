@@ -1,41 +1,47 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 5001;
-const apiPath = '/api/';
 
-app.use(express.json());
-app.use(express.urlencoded());
+app.use(express.json()) // for parsing application/json
+app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
 // website -- main page
 app.use(express.static('views'));
 
 
+// set view engine
+app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'));
+
 // ================== routers =======================================
-app.use(apiPath + 'users', require("./routes/user.route"));//+ 'users'
-
-app.get('/login', (req, res) => {
-    res.sendFile(__dirname + "/views/login.html");
-})
-
-//
-
-// app.get('/api/users', (req, res) => {
-//     res.send([{ name: "trinh hiep", adresss: "Quang Nam" }]);
-// })
-
-
-// routers API
-//app.use(apiPath + 'users', require('./routes/users.route'));
-// app.use(apiPath + 'products', require('./routes/products.route'));
-//app.use(apiPath + 'upload', require('./routes/upload.route'));
-
+app.use('/api', require("./routes/api.route"));//+ 'users'
+app.use('/', require('./routes/staff/index.route'));
 
 
 app.listen(port, function () {
     const host = 'localhost';
     console.log('Example app listening at http://%s:%s', host, port);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //https://www.youtube.com/watch?v=wuU_DfdTZOA

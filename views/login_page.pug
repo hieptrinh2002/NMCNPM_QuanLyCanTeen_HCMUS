@@ -1,0 +1,71 @@
+doctype html
+html(lang='vi')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title LOGIN
+    link(rel='stylesheet' href='./assets/css/main.css')
+    link(rel='stylesheet' href='./assets/css/grid.css')
+    link(rel='stylesheet' href='./assets/css/login.css')
+    link(rel='stylesheet' href='./assets/font/themify-icons/themify-icons.css')
+    link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css')
+    link(href='https://fonts.googleapis.com/css?family=Roboto&display=swap' rel='stylesheet')
+    link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css')
+  body
+    .overlay
+      form#form-login(action='/login' method='POST')
+        .con
+          // Start  header Content
+          header.head-form
+            .logo-image
+              img(src='./assets/img/logo.png' alt='' style='width: 200px;')
+            h2 LOG IN
+            p login here using your username and password
+          // End  header Content
+          br
+          .field-set
+            // user name
+            span.input-item
+              i.fa.fa-user-circle
+            // user name Input
+            input.form-input(name='username' type='text' placeholder='@UserName' required='')
+            br
+            // Password
+            span.input-item
+              i.fa.fa-key
+            // Password Input
+            input#pwd.form-input(name='password' type='password' placeholder='Password' required='')
+            // Show/hide password
+            span
+              i#eye.fa.fa-eye(aria-hidden='true' type='button')
+            br
+            // buttons
+            // button LogIn
+            button.log-in(type='submit')  LOG IN 
+          // other buttons
+          .other(style='width: 280px;')
+            .btn.submits.frgt-pass
+              a(href='/signin') Forgot Password
+            .btn.submits.sign-up
+              a(href='/signin') Sign Up 
+              i.fa.fa-user-plus(aria-hidden='true')
+
+    script.
+      function show() {
+      var p = document.getElementById('pwd');
+      p.setAttribute('type', 'text');
+      }
+      function hide() {
+      var p = document.getElementById('pwd');
+      p.setAttribute('type', 'password');
+      }
+      var pwShown = 0;
+      document.getElementById("eye").addEventListener("click", function () {
+      if (pwShown == 0) {
+      pwShown = 1;
+      show();
+      } else {
+      pwShown = 0;
+      hide();
+      }
+      }, false);

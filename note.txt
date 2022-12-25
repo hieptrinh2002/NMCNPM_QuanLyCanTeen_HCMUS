@@ -7,5 +7,6 @@ npm install multer --save
 npm install bcrypt
 
 npm install mysql
+npm install pug
 =============================
 tai postman
