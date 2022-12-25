@@ -50,14 +50,15 @@
 
 
 .list {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 100px;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20px;
-    margin-left: 210px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 100px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  margin-left: 200px;
+  width: 1000px;
 }
 
 .food {
@@ -80,11 +81,12 @@
 }
 
 .food .name {
-    position: absolute;
-    left: 35%;
-    top: 100px;
-    font-size: 15px;
-    font-weight: bold;
+  position: relative;
+  left: 2%;
+  top: 110px;
+  font-size: 15px;
+  text-align: center;
+  font-weight: bold;
 }
 
 .food .id {
@@ -135,11 +137,12 @@
 /* svg */
 
 #cart {
-    text-align: right;
-    position: absolute;
-    bottom: 20px;
-    right: 50px;
-    cursor: pointer;
+  text-align: right;
+  position: fixed;
+  top: 100px;
+  right: 50px;
+  cursor: pointer;
+  margin-left: 200px;
 }
 
 #cart :hover {
@@ -266,11 +269,11 @@
   #cart {
     font-size: 15px;
     color: #fff;
-    /* background: #c7b200; */
+    background: #f07b0e;
     border: 1px solid transparent;
     border-radius: 10px;
     outline: none;
-    margin-left: 1rem;
+    margin-left: 500px;
     padding: 12px;
     cursor: pointer;
   }

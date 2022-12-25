@@ -3,17 +3,16 @@ html(lang='vi')
   head
     meta(charset='UTF-8')
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
-    title STATISTICAL DAY
-    link(rel='stylesheet' href='../../assets/css/base.css')
-    link(rel='stylesheet' href='../../assets/css/main.css')
-    link(rel='stylesheet' href='../../assets/css/grid.css')
-    link(rel='stylesheet' href='../../assets/css/statistical.css')
-    link(rel='stylesheet' href='../../assets/css/statistical_day.css')
+    title Canteen US
+    link(rel='stylesheet' href='./assets/css/base.css')
+    link(rel='stylesheet' href='./assets/css/grid.css')
+    link(rel='stylesheet' href='./assets/css/main.css')
+    link(rel='stylesheet' href='./assets/css/style.css')
     link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css')
-    link(href='https://fonts.googleapis.com/css?family=Roboto&display=swap' rel='stylesheet')
+    link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto&display=swap')
     link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css')
   body
-    .app
+    .app(style='min-height: 100vh;')
       header.header
         .grid.wide
           nav.header__navbar.hide-on-mobile-tablet
@@ -24,8 +23,8 @@ html(lang='vi')
                   i.header__mobile-search-icon.fas.fa-search
                 // Header Logo
                 .header__logo.hide-on-tablet
-                  img.header__logo-img(src='../../assets/img/logo.png' alt='')
-                  a.header__logo-link(href='/trang_chu')
+                  img.header__logo-img(src='./assets/img/logo.png' alt='')
+                  a.header__logo-link(href='/')
                 input#mobile-search-checkbox.header__search-checkbox(type='checkbox' hidden='')
                 // Header Search
                 .header__search
@@ -35,31 +34,33 @@ html(lang='vi')
                     i.header__search-btn-icon.fas.fa-search
                 // Header Logo
                 .header__location.hide-on-tablet
-                  img.header__location-img(src='../../assets/img/location.png' alt='')
+                  img.header__location-img(src='./assets/img/location.png' alt='')
                   a.header__location-link(href='/')
                 // User
                 .header__user
-                  img.header__navbar-user-img(src='../../assets/img/user_avatar.png' alt='')
+                  img.header__navbar-user-img(src='./assets/img/user_avatar.png' alt='')
                   ul.header__navbar-user-menu
                     li.header__navbar-user-item
                       a(href='') Tài khoản của tôi
                     li.header__navbar-user-item.header__navbar-user-item--separate
                       a(href='') Đăng xuất
-      .app__container
+      .app__container(style='background-color: white;')
         .grid.wide
           .row.sm-gutter.app__content
             // Category
+            //.col.l-2.m-0.c-0(style='margin-top: 50px;')
             .toolbar
               nav.category
                 ul.category-list
-                  li.category-item
+                  li.category-item.category-item--active
+                    i.fa-solid.fa-house
                     button.category-item__link(type='button' onclick='dieu_huong()') Trang chủ
                     script.
                       function dieu_huong(){
                       location.assign("index");
                       }
                     // <button class="category-item__link">Trang chủ</button>
-                  li.category-item
+                  li.category-item.category
                     button.category-item__link(type='button' onclick='dieu_huong1()') Thực đơn
                     script.
                       function dieu_huong1(){
@@ -80,7 +81,7 @@ html(lang='vi')
                       location.assign("../khach_hang");
                       }
                     // <button class="category-item__link">Khách hàng</button>
-                  li.category-item.category-item--active
+                  li.category-item
                     button.category-item__link(type='button' onclick='dieu_huong4()') Thống kê
                     script.
                       function dieu_huong4(){
@@ -101,45 +102,28 @@ html(lang='vi')
                       location.assign("../tao_the");
                       }
                     // <button class="category-item__link">Tạo thẻ khách hàng</button>
-            .statistical
-              form#form-insert(action='/thong_ke/theo_ngay' method='POST')
-                label(for='') Nhập ngày: 
-                .form-group
-                  input.form-input(type='date' name='date' id ="dateid")
+            .right
+              .type-food
+                button#food.type-food-eat.active(style='visibility: hidden;') Đồ ăn
+                a(href = '/cart',)
+                  button#cart
+                    i.fa.fa-shopping-basket(aria-hidden='true') Giỏ hàng
+                button#drink.type-food-drink(style='visibility: hidden;')
+                  a(href='./drink' style='text-decoration: none; color: #39B1E4;') Nước, bánh
+      
+              .list
+                each food in foodStore 
+                      .food
+                        form(action='/index/add/${food.product_id}', method="post")                       
+                          .image
+                            img.img-prd(src=food.image_link alt='mi')
+                          .name.content-product-h3 !{food.product_name}
+                          span.price
+                            | !{food.price}
+                            .coin VND
+                          input(id = 'qty',type="number", name="quantity",value = "1",style = "width: 35px;")
+                          input(id = 'id',type = "hidden",name="id",value = food.product_id)
+                          button.add.btn-cart
+                            a(type = "submit") Thêm
 
-                script.
-                  
-                  document.getElementById("dateid").value = '!{date}';
-                  
-                input.form-submit(type='submit' value='THỐNG KÊ')
-                button.statistical-month(type='button' onclick='dieu_huong15()') THỐNG KÊ THEO THÁNG
-                script.
-                  function dieu_huong15(){
-                  location.assign("/thong_ke/theo_thang");
-                  }
-            .statistical-list
-              table
-                thead
-                  tr
-                    th Mã món
-                    th Tên món
-                    th Đơn giá
-                    th Số lượng đã bán
-                    th Thành tiền
-                    th Ngày bán
-                tbody
-                each product in products
-                    tr
-                      td= product.product_id
-                      td= product.product_name
-                      td= product.price
-                      td= product.SoLuong
-                      td= product.TongTien
-                      td= product.Ngay
-
-                 
-            .total
-              label Tổng tiền: 
-            .total-money
-              label !{total}
-            //-   điền tổng tiền dô đây nhe
+        

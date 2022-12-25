@@ -11,6 +11,9 @@ html(lang='vi')
     link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css')
     link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto&display=swap')
     link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css')
+  script 
+    - var BienChiTrangThai = !{trangthai}
+    - console.log(BienChiTrangThai)
   body
     .app(style='min-height: 100vh;')
       header.header
@@ -55,7 +58,7 @@ html(lang='vi')
                     button.category-item__link(type='button' onclick='dieu_huong()') Trang chủ
                     script.
                       function dieu_huong(){
-                      location.assign("trang_chu");
+                      location.assign("index");
                       }
                     // <button class="category-item__link">Trang chủ</button>
                   li.category-item
@@ -99,7 +102,7 @@ html(lang='vi')
                       function dieu_huong6(){
                       location.assign("tao_the");
                       }
-            .top-text
+            .top-text(style =style = "position:relative;left:200px;top:50px" )
               // <p class="id">Mã đơn : 43289</p>
               // <button class="thanh-toan"><img src="https://upload.wikimedia.org/wikipedia/vi/thumb/f/fe/MoMo_Logo.png/220px-MoMo_Logo.png" alt=""><a href="">Momo</a></button>
               // <a href=""><img src="https://upload.wikimedia.org/wikipedia/vi/thumb/f/fe/MoMo_Logo.png/220px-MoMo_Logo.png" alt="">Facebook</a>
@@ -115,15 +118,22 @@ html(lang='vi')
               // <button class="thanh-toan"> <a href="">Thanh toán</a> </button>
             #myModal.modal
               .modal-content
-                .modal-header
-                  h5.modal-title Mời nhập mã thẻ thành viên
-                  span.close ×
-                .modal-body
-                  .cart-row
-                    input(style='height: 24px; width: 200px;' type='text')
-                  .cart-payment
-                    button#btn-payment Thanh toán 
-                    p#success(style='display: none;') Thanh toán thành công
+                  .modal-header
+                    h5.modal-title Mời nhập mã thẻ thành viên
+                    span.close(style = "background: #a2edea;border-bottom-right-radius: 50px;border-bottom-left-radius: 50px;border-top-right-radius: 50px;border-top-left-radius: 50px;" ) ×
+                  .modal-body
+                    form(action="/payment", method="post") 
+                      .cart-row
+                        input(style='height: 24px; width: 200px;' type='text' name = "cus_id")
+                      .cart-payment
+                          button(id = "btn-payment") 
+                            a(type = "submit") Thanh toán
+                          if BienChiTrangThai == 0
+                            p#success(style='display: none;') Thanh toán thành công
+                          else if BienChiTrangThai == 1
+                            p#success(style='display: none;') Tài khoản không đủ thể thực hiện thanh toán 
+                          else 
+                            p#success(style='display: none;') Tài khoản không tồn tại
             #zalopay_qr.modal(style='display: none;')
               .modal-content
                 .modal-header
