@@ -5804,7 +5804,7 @@ a.list-group-item.active:focus .list-group-item-text {
 }
 
 .panel {
-    margin-bottom: px;
+    margin-bottom: 3px;
     background-color: #fff;
     border: 1px solid transparent;
     border-radius: 4px;
@@ -5813,6 +5813,10 @@ a.list-group-item.active:focus .list-group-item-text {
 }
 
 .panel-body {
+    position: relative;
+    nav-left: 500px;
+    margin-right: 500px;
+    margin-left: -5px;
     padding: 15px
 }
 
@@ -5953,6 +5957,9 @@ a.list-group-item.active:focus .list-group-item-text {
     padding: 10px 15px;
     background-color: #f5f5f5;
     border-top: 1px solid #ddd;
+    position:relative;
+    top: -5px;
+    left: 25px;
     border-bottom-right-radius: 3px;
     border-bottom-left-radius: 3px
 }
