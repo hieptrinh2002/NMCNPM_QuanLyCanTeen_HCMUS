@@ -46,9 +46,7 @@ const chooseMethod = async (req, res,next) => {
 const Payment = async (req,res,next)=>{
     let cus_num = parseInt(req.body.cus_id);
     let status = 1;
-    console.log("Gia tri cua ma khach",cus_num);
     newMon = TOTAL;
-    console.log("Xuat")
     console.log(newMon);
     try{
         connection.query('SELECT* FROM customer',(err,result)=>{
